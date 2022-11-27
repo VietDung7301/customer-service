@@ -1,0 +1,21 @@
+.order__head {
+  justify-content: space-between;
+  border-bottom: 2px solid grey;
+}
+
+.rate-body {
+  justify-content: space-between;
+}
+
+.order-status__icon--success,
+.order-status__text--success {
+  color: var(--success-color);
+}
+
+.action-buttons {
+  justify-content: end;
+}
+
+.star-vote {
+  align-items: center;
+}
