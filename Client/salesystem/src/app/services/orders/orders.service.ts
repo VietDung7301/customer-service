@@ -13,6 +13,6 @@ export class OrdersService {
   }
 
   getOrderById(id: string) {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get<any[]>(`${this.baseUrl}/${id}`);
   }
 }

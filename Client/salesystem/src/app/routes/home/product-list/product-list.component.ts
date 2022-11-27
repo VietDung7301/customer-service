@@ -1,3 +1,4 @@
+import { RatesService } from './../../../services/rater/rates.service';
 import { OrdersService } from './../../../services/orders/orders.service';
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
@@ -10,12 +11,17 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 export class ProductListComponent implements OnInit {
   orderList: any;
   currentOrder: any;
+  currentProduct: any;
+  currentProductRate: any;
+  currentProductStarRate: number = 0;
+  currentProductMessageRate: string = '';
   doneOrderList: any[] = [];
   shippingOrderList: any[] = [];
   visible = false;
   constructor(
     private message: NzMessageService,
-    private ordersService: OrdersService
+    private ordersService: OrdersService,
+    private ratesService: RatesService
   ) {}
 
   ngOnInit(): void {
@@ -37,6 +43,41 @@ export class ProductListComponent implements OnInit {
   async getDetailOrder(id: string) {
     var response = await this.ordersService.getOrderById(id).toPromise();
     this.currentOrder = response;
+  }
+
+  async getDetailProduct(orderId: string, productId: string) {
+    var response = await this.ordersService.getOrderById(orderId).toPromise();
+    this.currentOrder = response;
+
+    this.currentOrder.productList.forEach((product: any) => {
+      if (product.productId == productId) {
+        this.currentProduct = product;
+      }
+    });
+    this.currentProductRate = null;
+    this.currentProductStarRate = 0;
+    this.currentProductMessageRate = '';
+    this.currentProductRate = await this.getDetailProductRate(
+      orderId,
+      productId
+    );
+    if (this.currentProductRate != null) {
+      this.currentProductStarRate = this.currentProductRate.starNumbers;
+      this.currentProductMessageRate = this.currentProductRate.message;
+    }
+  }
+
+  async getDetailProductRate(orderId: string, productId: string) {
+    var thisDetailVote = null;
+    var allRates = await this.ratesService.getAllListRates().toPromise();
+    console.log(allRates);
+    allRates.forEach((element) => {
+      if (element.orderId == orderId && element.productId == productId) {
+        thisDetailVote = element;
+      }
+      console.log(element);
+    });
+    return thisDetailVote;
   }
 
   getOrderListStatus() {
@@ -65,10 +106,11 @@ export class ProductListComponent implements OnInit {
     return statusLabel;
   }
 
-  async open(orderId: string) {
-    await this.getDetailOrder(orderId);
+  async open(orderId: string, productId: string) {
+    // await this.getDetailOrder(orderId);
+    await this.getDetailProduct(orderId, productId);
+    // var rateInfo = await this.getDetailProductRate(orderId, ).toPromise();
     this.visible = true;
-    console.log(this.currentOrder);
   }
 
   close(): void {
