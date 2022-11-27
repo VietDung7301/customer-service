@@ -336,9 +336,7 @@
     <button class="second-button mr-12" (click)="close()">Hủy bỏ</button>
     <button
       class="default-button"
-      (click)="
-        createMessage('success', 'Đánh giá đã được gửi đi thành công'); close()
-      "
+      (click)="sendProductRate(currentOrder.id, currentProduct.productId)"
     >
       Hoàn tất
     </button>

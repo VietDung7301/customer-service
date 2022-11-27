@@ -1,3 +1,4 @@
+import { Rate } from './../../../model/rate';
 import { RatesService } from './../../../services/rater/rates.service';
 import { OrdersService } from './../../../services/orders/orders.service';
 import { Component, OnInit } from '@angular/core';
@@ -78,6 +79,24 @@ export class ProductListComponent implements OnInit {
       console.log(element);
     });
     return thisDetailVote;
+  }
+
+  sendProductRate(orderId: string, productId: string) {
+    if (this.currentProductStarRate != 0) {
+      const newRate: Rate = new Rate(
+        orderId,
+        productId,
+        this.currentProductStarRate,
+        this.currentProductMessageRate
+      );
+      this.ratesService.sendProductRate(newRate).subscribe((response) => {
+        this.createMessage('success', 'Đánh giá đã được gửi đi thành công');
+        console.log('success');
+        this.close();
+      });
+    } else {
+      this.createMessage('error', 'Vui lòng đánh giá số sao của sản phẩm');
+    }
   }
 
   getOrderListStatus() {
