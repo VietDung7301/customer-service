@@ -1,5 +1,5 @@
 {
-"orders-list": [
+  "orders-list": [
     {
       "id": "1",
       "productList": [
@@ -10,7 +10,6 @@
           "price": 800000,
           "quantity": 2,
           "description": "abc description"
-
         }
       ],
       "orderTime": "Sun Nov 16 2022 09:00:00 GMT+0700",
@@ -49,7 +48,6 @@
           "price": 800000,
           "quantity": 2,
           "description": "abc description"
-
         }
       ],
       "orderTime": "Sun Nov 16 2022 09:00:00 GMT+0700",
@@ -65,13 +63,11 @@
           "price": 800000,
           "quantity": 2,
           "description": "abc description"
-
         }
       ],
       "orderTime": "Sun Nov 16 2022 09:00:00 GMT+0700",
       "status": "shipping"
     }
-    
   ],
   "rates-list": [
     {
@@ -87,6 +83,20 @@
       "productId": "0002",
       "starNumbers": 3,
       "message": "Chất lượng rất tuyệt"
+    },
+    {
+      "orderId": "1",
+      "productId": "0001",
+      "starNumbers": 4,
+      "message": "a",
+      "id": "uWCGIJF"
+    },
+    {
+      "orderId": "1",
+      "productId": "0001",
+      "starNumbers": 4,
+      "message": "a",
+      "id": "2fweOFs"
     }
   ]
 }

@@ -11,7 +11,8 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class RatesService {
-  baseUrl = 'http://localhost:3000/rates-list';
+  mockupUrl = 'http://localhost:3000/rates-list';
+  baseUrl = 'http://localhost:8000/product/rating';
 
   constructor(private http: HttpClient) {}
 
@@ -20,6 +21,7 @@ export class RatesService {
   }
 
   sendProductRate(data: any) {
+    console.log('posting');
     return this.http.post<any[]>(this.baseUrl, data);
     // return this.http.post<any[]>(this.baseUrl, data, httpOptions);
   }

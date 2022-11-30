@@ -307,8 +307,8 @@
             </div>
           </div>
         </div>
-        <form
-          #rateProduct="ngForm"
+        <!-- <form -->
+          <!-- #rateProduct="ngForm"
           (ngSubmit)="
             sendProductRate(
               currentOrder.id,
@@ -318,7 +318,7 @@
             )
           "
           enctype="multipart/form-data"
-        >
+        > -->
           <div class="star-vote flr mb-12">
             <div class="star-vote__label mr-24">Chất lượng sản phẩm</div>
             <div class="star-vote__icon">
@@ -338,13 +338,13 @@
               ></textarea>
             </div>
           </div>
-          <div>
+          <!-- <div>
             <input type="file" #imgRate />
-          </div>
+          </div> -->
           <div>
             <input type="submit" value="Submit" />
           </div>
-        </form>
+        <!-- </form> -->
       </div>
     </div>
 
@@ -364,8 +364,8 @@
 <ng-template #footer>
   <div class="action-buttons flr">
     <button class="second-button mr-12" (click)="close()">Hủy bỏ</button>
-    <button class="default-button">
-      <!-- (click)="sendProductRate(currentOrder.id, currentProduct.productId)" -->
+    <button class="default-button" (click)="sendProductRate(currentOrder.id, currentProduct.productId)">
+      
       Hoàn tất
     </button>
   </div>

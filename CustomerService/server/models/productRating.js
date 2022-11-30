@@ -14,10 +14,10 @@ const ProductRatingSchema = new Schema({
     userId: {
         type: String
     },
-    voteStars: {
+    starNumbers: {
         type: Number
     },
-    voteMessage: {
+    message: {
         type: String
     }
 }, {

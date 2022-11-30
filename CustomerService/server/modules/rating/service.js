@@ -8,11 +8,17 @@ exports.createProductRating = async (data) => {
             productId: data.productId,
             userName: data.userName,
             userId: data.userId,
-            voteStars: data.voteStars,
-            voteMessage: data.voteMessage
+            starNumbers: data.starNumbers,
+            message: data.message
         })
     }
     let productRating = await ProductRating(DB_CONNECTION).findById({_id: newProductRating._id});
     console.log("productRating", productRating);
     return productRating;
+}
+
+exports.getAllRating = async () => {
+    let allRating = await ProductRating(DB_CONNECTION).find();
+    console.log(allRating);
+    return allRating;
 }
