@@ -1,5 +1,5 @@
 const mongoose = require("mongoose")
-const {ProductRating} = require("../models/productRating")
+const ProductRating = require("../models/productRating")
 
 require("dotenv").config();
 
