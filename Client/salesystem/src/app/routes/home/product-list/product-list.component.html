@@ -337,9 +337,34 @@
               [nzAutosize]="{ minRows: 3, maxRows: 6 }"
             ></textarea>
           </div>
-          <div class="image-vote">
+          <!-- <div class="image-vote">
             <i class="fa-solid fa-camera image-vote_icon"></i>
             <p class="image-vote_text">Thêm hình ảnh</p>
+          </div> -->
+          <div class="clearfix mt-12">
+            <nz-upload
+              nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+              nzListType="picture-card"
+              [(nzFileList)]="fileList"
+              [nzShowButton]="fileList.length < 4"
+              [nzPreview]="handlePreview"
+            >
+              <div>
+                <i class="fa-solid fa-camera image-vote_icon"></i>
+                <!-- <span nz-icon nzType="plus"></span> -->
+                <div style="margin-top: 8px">Thêm hình ảnh</div>
+              </div>
+            </nz-upload>
+            <nz-modal
+              [nzVisible]="previewVisible"
+              [nzContent]="modalContent"
+              [nzFooter]="null"
+              (nzOnCancel)="previewVisible = false"
+            >
+              <ng-template #modalContent>
+                <img [src]="previewImage" [ngStyle]="{ width: '100%' }" />
+              </ng-template>
+            </nz-modal>
           </div>
         </div>
         <!-- <div>

@@ -3,7 +3,15 @@ import { RatesService } from './../../../services/rater/rates.service';
 import { OrdersService } from './../../../services/orders/orders.service';
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
+import { NzUploadFile } from 'ng-zorro-antd/upload';
 
+const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
+  new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = (error) => reject(error);
+  });
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -19,6 +27,19 @@ export class ProductListComponent implements OnInit {
   doneOrderList: any[] = [];
   shippingOrderList: any[] = [];
   visible = false;
+
+  fileList: NzUploadFile[] = [];
+
+  previewImage: string | undefined = '';
+  previewVisible = false;
+
+  handlePreview = async (file: NzUploadFile): Promise<void> => {
+    if (!file.url && !file.preview) {
+      file.preview = await getBase64(file.originFileObj!);
+    }
+    this.previewImage = file.url || file.preview;
+    this.previewVisible = true;
+  };
   constructor(
     private message: NzMessageService,
     private ordersService: OrdersService,
@@ -71,7 +92,7 @@ export class ProductListComponent implements OnInit {
   async getDetailProductRate(orderId: string, productId: string) {
     var thisDetailVote = null;
     var allRates = await this.ratesService.getAllListRates().toPromise();
-    console.log("allRates", allRates);
+    console.log(allRates);
     allRates.forEach((element) => {
       if (element.orderId == orderId && element.productId == productId) {
         thisDetailVote = element;
@@ -124,9 +145,6 @@ export class ProductListComponent implements OnInit {
   //       alert('thành công');
   //     }
   //   });
-  //   // } else {
-  //   //   this.createMessage('error', 'Vui lòng đánh giá số sao của sản phẩm');
-  //   // }
   // }
 
   getOrderListStatus() {
