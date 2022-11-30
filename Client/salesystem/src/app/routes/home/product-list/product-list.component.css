@@ -19,3 +19,29 @@
 .star-vote {
   align-items: center;
 }
+
+.image-vote {
+  border: 1px solid grey;
+  border-radius: 12px;
+  height: 70px;
+  width: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.image-vote:hover {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+
+}
+
+.image-vote_icon {
+  font-size: 24px;
+}
+
+.image-vote_text {
+  font-size: 10px;
+}
