@@ -1,6 +1,7 @@
 import { element } from 'protractor';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
@@ -21,5 +22,10 @@ export class RatesService {
   sendProductRate(data: any) {
     return this.http.post<any[]>(this.baseUrl, data);
     // return this.http.post<any[]>(this.baseUrl, data, httpOptions);
+  }
+
+  uploadImage(body: any): Observable<any> {
+    let ob = this.http.post(`http://localhost:3000/files`, body);
+    return ob;
   }
 }

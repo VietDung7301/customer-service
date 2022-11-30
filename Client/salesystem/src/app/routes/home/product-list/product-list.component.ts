@@ -81,22 +81,52 @@ export class ProductListComponent implements OnInit {
     return thisDetailVote;
   }
 
-  sendProductRate(orderId: string, productId: string) {
-    if (this.currentProductStarRate != 0) {
-      const newRate: Rate = new Rate(
-        orderId,
-        productId,
-        this.currentProductStarRate,
-        this.currentProductMessageRate
-      );
-      this.ratesService.sendProductRate(newRate).subscribe((response) => {
-        this.createMessage('success', 'Đánh giá đã được gửi đi thành công');
-        console.log('success');
-        this.close();
-      });
-    } else {
-      this.createMessage('error', 'Vui lòng đánh giá số sao của sản phẩm');
-    }
+  // sendProductRate(orderId: string, productId: string) {
+  //   if (this.currentProductStarRate != 0) {
+  //     const newRate: Rate = new Rate(
+  //       orderId,
+  //       productId,
+  //       this.currentProductStarRate,
+  //       this.currentProductMessageRate
+  //     );
+  //     this.ratesService.sendProductRate(newRate).subscribe((response) => {
+  //       this.createMessage('success', 'Đánh giá đã được gửi đi thành công');
+  //       console.log('success');
+  //       this.close();
+  //     });
+  //   } else {
+  //     this.createMessage('error', 'Vui lòng đánh giá số sao của sản phẩm');
+  //   }
+  // }
+  sendProductRate(
+    orderId: string,
+    productId: string,
+    rate: Rate,
+    fileImg: any
+  ) {
+    // if (this.currentProductStarRate != 0) {
+    const newRate: Rate = new Rate(
+      orderId,
+      productId,
+      this.currentProductStarRate,
+      this.currentProductMessageRate
+    );
+    this.ratesService.sendProductRate(newRate).subscribe((response) => {
+      this.createMessage('success', 'Đánh giá đã được gửi đi thành công');
+      console.log('success');
+      this.close();
+    });
+    var formData = new FormData();
+    formData.append('Files', fileImg[0]);
+    formData.append('RateStar', 'huy');
+    this.ratesService.uploadImage(formData).subscribe((response) => {
+      if (response === true) {
+        alert('thành công');
+      }
+    });
+    // } else {
+    //   this.createMessage('error', 'Vui lòng đánh giá số sao của sản phẩm');
+    // }
   }
 
   getOrderListStatus() {

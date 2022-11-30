@@ -307,37 +307,65 @@
             </div>
           </div>
         </div>
-        <div class="star-vote flr mb-12">
-          <div class="star-vote__label mr-24">Chất lượng sản phẩm</div>
-          <div class="star-vote__icon">
-            <nz-rate [(ngModel)]="currentProductStarRate"></nz-rate>
+        <form
+          #rateProduct="ngForm"
+          (ngSubmit)="
+            sendProductRate(
+              currentOrder.id,
+              currentProduct.productId,
+              rateProduct.value,
+              imgRate.files
+            )
+          "
+          enctype="multipart/form-data"
+        >
+          <div class="star-vote flr mb-12">
+            <div class="star-vote__label mr-24">Chất lượng sản phẩm</div>
+            <div class="star-vote__icon">
+              <nz-rate [(ngModel)]="currentProductStarRate"></nz-rate>
+            </div>
           </div>
-        </div>
-        <div class="text-vote" nz-row>
-          <div class="text-vote__label" nz-col [nzSpan]="7">
-            Đánh giá chi tiết
+          <div class="text-vote" nz-row>
+            <div class="text-vote__label" nz-col [nzSpan]="7">
+              Đánh giá chi tiết
+            </div>
+            <div class="text-vote__input" nz-col [nzSpan]="17">
+              <textarea
+                nz-input
+                placeholder="Để lại đánh giá của bạn"
+                [(ngModel)]="currentProductMessageRate"
+                [nzAutosize]="{ minRows: 3, maxRows: 6 }"
+              ></textarea>
+            </div>
           </div>
-          <div class="text-vote__input" nz-col [nzSpan]="17">
-            <textarea
-              nz-input
-              placeholder="Để lại đánh giá của bạn"
-              [(ngModel)]="currentProductMessageRate"
-              [nzAutosize]="{ minRows: 3, maxRows: 6 }"
-            ></textarea>
+          <div>
+            <input type="file" #imgRate />
           </div>
-        </div>
+          <div>
+            <input type="submit" value="Submit" />
+          </div>
+        </form>
       </div>
     </div>
+
+    <form
+      action="http://localhost:3000/files"
+      method="post"
+      enctype="multipart/form-data"
+    >
+      <input type="text" name="name" />
+      <input type="text" name="pass" />
+      <input type="file" name="photos" multiple /><br /><br />
+      <input type="submit" />
+    </form>
   </ng-container>
 </nz-drawer>
 
 <ng-template #footer>
   <div class="action-buttons flr">
     <button class="second-button mr-12" (click)="close()">Hủy bỏ</button>
-    <button
-      class="default-button"
-      (click)="sendProductRate(currentOrder.id, currentProduct.productId)"
-    >
+    <button class="default-button">
+      <!-- (click)="sendProductRate(currentOrder.id, currentProduct.productId)" -->
       Hoàn tất
     </button>
   </div>
