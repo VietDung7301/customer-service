@@ -1,3 +1,4 @@
+const { ListCollectionsCursor } = require("mongodb")
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
@@ -8,17 +9,28 @@ const ProductRatingSchema = new Schema({
     productId: {
         type: String
     },
-    userName: {
-        type: String
-    },
-    userId: {
-        type: String
-    },
-    voteStars: {
+   
+    totalVoteForProduct:{
         type: Number
     },
-    voteMessage: {
-        type: String
+    averageStar:{
+        type: Number
+    },
+    userVote: {
+        type:[{userName: {
+            type: String
+        },
+        userId: {
+            type: String
+        },
+        voteStars: {
+            type: Number
+        },
+        voteMessage: {
+            type: String
+        }
+    }]
+
     }
 }, {
     timestamps: true
