@@ -20,6 +20,20 @@ exports.createProductRating = async (req, res) => {
     }
 }
 
+exports.getAllRating = async(req, res) => {
+    try {
+        const allRating = await service.getAllRating();
+        console.log("rating", allRating);
+        res.send(allRating);
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            messages: ["Get fail"],
+            content: error.messages
+        })
+    }
+}
+
 exports.test = async(req, res) => {
     res.status(200).json({
         success: true,
