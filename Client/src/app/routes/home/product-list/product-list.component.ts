@@ -174,6 +174,7 @@ export class ProductListComponent implements OnInit {
   }
 
   async open(orderId: string, productId: string) {
+    debugger;
     // await this.getDetailOrder(orderId);
     await this.getDetailProduct(orderId, productId);
     // var rateInfo = await this.getDetailProductRate(orderId, ).toPromise();

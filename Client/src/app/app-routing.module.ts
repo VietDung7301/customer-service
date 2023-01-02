@@ -4,6 +4,7 @@ import { HomeComponent } from './routes/home/home.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './routes/home/dashboard/dashboard.component';
+import { RateListComponent } from './routes/home/rate-list/rate-list.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/home/dashboard' },
@@ -15,6 +16,7 @@ const routes: Routes = [
       { path: 'dashboard', component: DashboardComponent },
       { path: 'product-list', component: ProductListComponent },
       { path: 'product-detail', component: ProductDetailComponent },
+      { path: 'rate-list', component: RateListComponent },
     ],
   },
 ];
