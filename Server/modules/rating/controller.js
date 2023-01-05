@@ -4,7 +4,7 @@ exports.createProductRating = async (req, res) => {
     try {
         console.log("req", req.body);
         const newProductRating = await service.createProductRating(req.body);
-
+      
         res.status(201).json({
             success: true,
             messages: ["Add success"],
@@ -19,16 +19,20 @@ exports.createProductRating = async (req, res) => {
         })
     }
 }
-
-exports.getAllRating = async(req, res) => {
+exports.createUserComplain=async (req, res)=>{
     try {
-        const allRating = await service.getAllRating();
-        console.log("rating", allRating);
-        res.send(allRating);
-    } catch (error) {
+        console.log("req",req.body);
+        const newUserComplain = await service.createUserComplain(req.body);
+        res.status(201).json({
+            success: true,
+            messages: ["Add success"],
+            content: newUserComplain
+        })
+    }catch(error){
+        console.log(error);
         res.status(400).json({
             success: false,
-            messages: ["Get fail"],
+            messages: "Add fail",
             content: error.messages
         })
     }

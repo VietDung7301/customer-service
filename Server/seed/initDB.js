@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 const ProductRating = require("../models/productRating")
-
+const UserProduct=require("..models/userProduct");
+const UserComplain=require("..models/userComplain");
 require("dotenv").config();
 
 const initDB = async () => {
