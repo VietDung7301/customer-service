@@ -17,13 +17,17 @@ export class RatesService {
   constructor(private http: HttpClient) {}
 
   getAllListRates() {
-    return this.http.get<any[]>(this.baseUrl);
+    return this.http.get<any[]>(this.mockupUrl);
   }
 
   sendProductRate(data: any) {
     console.log('posting');
-    return this.http.post<any[]>(this.baseUrl, data);
+    return this.http.post<any[]>(this.mockupUrl, data);
     // return this.http.post<any[]>(this.baseUrl, data, httpOptions);
+  }
+
+  updateProductRate(id: any, data: any) {
+    return this.http.put<any[]>(`${this.mockupUrl}/${id}`, data);
   }
 
   uploadImage(body: any): Observable<any> {

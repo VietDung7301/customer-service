@@ -16,6 +16,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { DashboardComponent } from './routes/home/dashboard/dashboard.component';
+import { RateListComponent } from './routes/home/rate-list/rate-list.component';
+import { RateDetailDrawerComponent } from './routes/home/rate-list/partials/rate-detail-drawer/rate-detail-drawer.component';
 
 registerLocaleData(en);
 
@@ -27,6 +29,8 @@ registerLocaleData(en);
     ProductListComponent,
     ProductDetailComponent,
     DrawerFormBaseComponent,
+    RateListComponent,
+    RateDetailDrawerComponent
   ],
   imports: [
     BrowserModule,
