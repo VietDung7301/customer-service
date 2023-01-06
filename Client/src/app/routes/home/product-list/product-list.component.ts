@@ -92,12 +92,10 @@ export class ProductListComponent implements OnInit {
   async getDetailProductRate(orderId: string, productId: string) {
     var thisDetailVote = null;
     var allRates = await this.ratesService.getAllListRates().toPromise();
-    console.log(allRates);
     allRates.forEach((element) => {
       if (element.orderId == orderId && element.productId == productId) {
         thisDetailVote = element;
       }
-      console.log(element);
     });
     return thisDetailVote;
   }
