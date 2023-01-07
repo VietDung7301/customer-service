@@ -1,60 +1,58 @@
 const ProductRating = require("../../models/productRating");
 
 /**
- * 
+ * Thêm 1 đánh giá sản phẩm mới
  * @param {{
- *    productRating: string, 
- *    game: string,
+ *    userId: String,
+ *	  userName: String,
+ *    message: String,
+ *    orderId: String,
+ *    productId: String,
+ *    starNumbers: Number
  * }} data 
- * @returns value
+ * @returns new ProductRating
  */
 exports.createProductRating = async (data) => {
-
-    let newProductRating;
-    
-    if (data) {
-     var newData= {orderId: "00000",
-  productId: "00000",
- 
-  totalVoteForProduct:0,
-  averageStar:0,
-  userVote:[{userId:"00000",userName:"00000",voteStars:0,voteMessage:"000000"}]
-    }
-  
-   let CountDocument=await ProductRating(DB_CONNECTION).countDocuments({'productId':data.productId});
-   if(CountDocument==0){
-    newData.productId=data.productId;
-    newData.orderId=data.orderId;
-    newData.totalVoteForProduct=1;
-    newData.averageStar=parseInt(data.voteStars);
-    newData.userVote=[{userId:data.userId,userName: data.userName,voteStars:data.voteStars,voteMessage:data.voteMessage}];
-
-    newProductRating = await ProductRating(DB_CONNECTION).create(newData);
+	data.starNumbers = parseInt(data.starNumbers);
+	let newRating = {
+		orderId: data.orderId,
+		userId: data.userId,
+		description: data.message,
+		star: data.starNumbers,
+		userName: data.userName,
+	};
 
 
-   let productRating = await ProductRating(DB_CONNECTION).findById({_id: newProductRating._id});
-  return productRating
-   }else{
-    await ProductRating(DB_CONNECTION).find({'productId':data.productId},function(err,docs){
-      if(err){
-      }else{
-       newData.productId=docs[0].productId;
-       newData.orderId=docs[0].orderId;
-       newData.totalVoteForProduct=docs[0].totalVoteForProduct+1;
-       newData.averageStar=(docs[0].averageStar*docs[0].totalVoteForProduct+parseInt(data.voteStars))/(docs[0].totalVoteForProduct+1);
-      
-       var uservoteX={userName:data.userName,userId: data.userId,voteStars:data.voteStars,voteMessage:data.voteMessage};
-      
-       docs[0].userVote.push(uservoteX);
-       newData.userVote=docs[0].userVote;
-      
-      }
-       
-      }).clone();
+	// 1. Nếu productId chưa có trong DB, insert nó vào DB
+	let defaultRating = {
+		productId: data.productId,
+		totalVote: 0,
+		avgStar: 0,
+		ratingList: []
+	}
+	await ProductRating(DB_CONNECTION).updateOne(
+		{'productId': data.productId},
+		{$setOnInsert: defaultRating},
+		{upsert: true},
+	);
 
-      await ProductRating(DB_CONNECTION).findOneAndUpdate({'productId':data.productId},newData);
-      newProductRating =await ProductRating(DB_CONNECTION).find({'productId':data.productId});
-      return newProductRating;
-   }
-}
+
+	// 2. Thêm đánh giá mới vào rating list
+	// new avgStar = (avgStar * (totalVote - 1) + starNumber) / totalVote
+	let {totalVote, avgStar} = await ProductRating(DB_CONNECTION).findOne(
+		{'productId': data.productId},
+		{'totalVote': 1, 'avgStar': 1, '_id': 0}
+	) || {totalVote: 0, avgStar: 0};
+
+	console.log(totalVote, avgStar)
+	let newAvgStar = (avgStar * totalVote + data.starNumbers) / (totalVote + 1);
+
+	let result = await ProductRating(DB_CONNECTION).updateOne(
+		{'productId': data.productId},
+		{
+			$set: {'avgStar': newAvgStar},
+			$inc: {'totalVote': 1},
+			$push: {'ratingList': newRating}
+		}
+	);
 }
