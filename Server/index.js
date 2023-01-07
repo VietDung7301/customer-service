@@ -2,7 +2,8 @@ const express = require("express");
 const app = express();
 const server = require("http").createServer(app);
 const router = express.Router();
-
+const bodyParser = require('body-parser');
+const cors = require('cors');
 /**
  * 
  * Import các biến toàn cục
@@ -10,14 +11,15 @@ const router = express.Router();
 require("dotenv").config();
 require("./global")(server);
 
+app.use(cors());
+app.use(bodyParser.json());
 app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({ extended: false, limit: '50mb', parameterLimit: 50000 }));
 
 /**
- * Import các router để bắt dữ liệu từ người dùng
+ * Import router dùng để bắt dữ liệu liên quan đến đánh giá product
  */
 router.use("", require("./modules/rating/route"));
-router.use("", require("./modules/userComplant/route"));
 
 
 app.use(router);
