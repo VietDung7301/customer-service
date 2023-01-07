@@ -11,7 +11,7 @@ const initModels = (db, models) => {
         if (!db.models[key]) model(db)
     }
 }
-const usernam
+
 module.exports = async(server) => {
     const connectOptions = {
         useNewUrlParser: true,
