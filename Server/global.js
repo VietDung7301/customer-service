@@ -26,10 +26,7 @@ module.exports = async(server) => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         }
-    global.DB_CONNECTION = mongoose.createConnection(
-        `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT || "27017"}/${process.env.DB_NAME}`
-,
-        connectOptions
+    global.DB_CONNECTION = mongoose.createConnection(process.env.MONGO_URL
     );
 
     initModels(DB_CONNECTION, models);
