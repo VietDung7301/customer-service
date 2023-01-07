@@ -28,6 +28,7 @@ app.use(router);
  * Khởi động server
  */
 const port = process.env.PORT;
-server.listen(port, () => {
+const host= process.env.DB_HOST;
+server.listen(port, /*() => {
     console.log(`Server up and running on: ${port}`);
-})
+}*/host)
