@@ -26,7 +26,7 @@ module.exports = async(server) => {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         }
-    global.DB_CONNECTION = mongoose.createConnection(process.env.MONGO_URL+'/customerservice');
+    global.DB_CONNECTION = mongoose.createConnection(process.env.MONGO_URL);
 
     initModels(DB_CONNECTION, models);
 }
