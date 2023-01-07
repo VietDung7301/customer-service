@@ -11,7 +11,7 @@ const initModels = (db, models) => {
         if (!db.models[key]) model(db)
     }
 }
-
+const usernam
 module.exports = async(server) => {
     const connectOptions = {
         useNewUrlParser: true,
@@ -19,7 +19,7 @@ module.exports = async(server) => {
     }
     global.DB_CONNECTION = mongoose.createConnection(
         /*`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT || "27017"}/${process.env.DB_NAME}`*/
-`mongodb://${{ process.env.DB_USERNAME }}:${{ process.env.DB_PASSWORD }}@${{  process.env.DB_HOST }}:${{ process.env.DB_PORT }}`,
+`mongodb://mongo:ltij5XESmo4xitBu0Io5@containers-us-west-114.railway.app:6673`,
         connectOptions
     );
 
