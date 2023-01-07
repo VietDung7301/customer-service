@@ -18,7 +18,8 @@ module.exports = async(server) => {
         useUnifiedTopology: true,
     }
     global.DB_CONNECTION = mongoose.createConnection(
-        `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT || "27017"}/${process.env.DB_NAME}`,
+        /*`mongodb://${process.env.DB_HOST}:${process.env.DB_PORT || "27017"}/${process.env.DB_NAME}`*/
+`mongodb://${{ process.env.DB_USERNAME }}:${{ process.env.DB_PASSWORD }}@${{  process.env.DB_HOST }}:${{ process.env.DB_PORT }}`,
         connectOptions
     );
 
