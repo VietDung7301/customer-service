@@ -1,7 +1,5 @@
 const mongoose = require("mongoose")
 const ProductRating = require("../models/productRating")
-const UserProduct=require("..models/userProduct");
-const UserComplain=require("..models/userComplain");
 require("dotenv").config();
 
 const initDB = async () => {
@@ -10,10 +8,19 @@ const initDB = async () => {
     /**
      * 1. Tạo kết nối đến database
      */
-    const connectOptions = {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    }
+    let connectOptions = process.env.DB_AUTHENTICATION === 'true' ?
+        {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            user: process.env.DB_USERNAME,
+            pass: process.env.DB_PASSWORD,
+            auth: {
+                authSource: 'admin'
+            }
+        } : {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        }
 
     const systemDB = mongoose.createConnection(
         `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT || "27017"}/${process.env.DB_NAME}`,
@@ -30,12 +37,9 @@ const initDB = async () => {
     
     await ProductRating(systemDB).insertMany([
         {
-            orderId: "day la 1",
             productId: "day la product",
-            userName: "day la us",
-            userId: 'id',
-            voteStars: 5,
-            voteMessage: 'chua chac da gion dau'
+            avgStar: 5,
+            totalVote: 0
         }
     ])
 

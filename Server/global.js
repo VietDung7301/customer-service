@@ -13,10 +13,19 @@ const initModels = (db, models) => {
 }
 
 module.exports = async(server) => {
-    const connectOptions = {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-    }
+    let connectOptions = process.env.DB_AUTHENTICATION === 'true' ?
+        {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            user: process.env.DB_USERNAME,
+            pass: process.env.DB_PASSWORD,
+            auth: {
+                authSource: 'admin'
+            }
+        } : {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        }
     global.DB_CONNECTION = mongoose.createConnection(
         `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT || "27017"}/${process.env.DB_NAME}`
 ,
