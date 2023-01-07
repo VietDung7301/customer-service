@@ -20,6 +20,7 @@ app.use(express.urlencoded({ extended: false, limit: '50mb', parameterLimit: 500
  * Import router dùng để bắt dữ liệu liên quan đến đánh giá product
  */
 router.use("", require("./modules/rating/route"));
+router.use("", require("./modules/userComplant/route"));
 
 
 app.use(router);
@@ -28,7 +29,6 @@ app.use(router);
  * Khởi động server
  */
 const port = process.env.PORT;
-const host= process.env.DB_HOST;
-server.listen(port, /*() => {
-    console.log(`Server up and running on: ${port}`);
-}*/host)
+server.listen(port, () => {
+    console.log(`Server up and running on: ${port} !`)
+});
