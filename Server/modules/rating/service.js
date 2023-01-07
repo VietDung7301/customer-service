@@ -56,3 +56,45 @@ exports.createProductRating = async (data) => {
 		}
 	);
 }
+
+
+/**
+ * Lấy danh sách đánh giá của tất cả sản phẩm
+ * @return {[{
+ * 	productId: string,
+ * 	avgStar: number,
+ * 	totalVote: number
+ * }]} result
+ */
+exports.getAllProductRating = async () => {
+	let result = await ProductRating(DB_CONNECTION).aggregate([
+		{$project: {'productId': 1, 'avgStar': 1, 'totalVote': 1, '_id': 0}}
+	]);
+	return result;
+}
+
+
+/**
+ * Lấy danh sách đánh giá của một sản phẩm theo productId
+ * @param {string} productId
+ * @return {{
+ * productId: string
+ * avgStar: number,
+ * totalVote: number,
+ * ratingList: [{
+ * 		userName: string,
+ * 		userId: string,
+ * 		star: number,
+ * 		description: string,
+ * 		handler: string,
+ *      createdAt: Date,
+ * 		updatedAt: Date
+ * }]
+ * }}
+*/
+exports.getProductRating = async (productId) => {
+	let result = await ProductRating(DB_CONNECTION).findOne(
+		{'productId': productId}
+	);
+	return result;
+}
