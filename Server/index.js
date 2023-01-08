@@ -17,7 +17,7 @@ app.use(express.json({limit: '50mb'}));
 app.use(express.urlencoded({ extended: false, limit: '50mb', parameterLimit: 50000 }));
 
 /**
- * Import router dùng để bắt dữ liệu liên quan đến đánh giá product
+ * Import router dùng để bắt dữ liệu
  */
 router.use("", require("./modules/rating/route"));
 router.use("", require("./modules/userComplant/route"));

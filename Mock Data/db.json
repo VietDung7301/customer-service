@@ -161,7 +161,10 @@
       "productId": "0001",
       "starNumbers": 4,
       "message": "a",
-      "id": "IOkNwPb"
+      "id": "IOkNwPb",
+      "productName": "Bàn chải điện",
+      "productImageUrl": "https://phongreviews.com/wp-content/uploads/2020/11/ban-chai-danh-rang-dien.jpg",
+      "status": 0
     }
   ]
 }
