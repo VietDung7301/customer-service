@@ -98,3 +98,23 @@ exports.getProductRating = async (productId) => {
 	);
 	return result;
 }
+/**
+* Kiểm tra 1 người dùng đã đánh giá 1 sp chưa
+*@return {{
+*		   content: boolean
+*          message: String 
+*		 }}
+*/
+exports.getUserProductRating = async(data)=>{
+	let productRateInfor = await ProductRating(DB_CONNECTION).findOne(
+		{'productId': data.pid}
+	);
+	let result=productRateInfor.ratingList.some(object => object.userId === data.uid)
+	if(result==true){
+	return {content:result,
+		    message:"The user has rated this product previous"}
+	}else{
+	return {content:result,
+		    message:"The user didn't rate this product previous"}
+	}
+}
