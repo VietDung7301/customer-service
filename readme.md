@@ -3,6 +3,7 @@
 #### 1. Khởi động server
 ```shell
 cd Server
+npm install
 npm run dev
 ```
 #### 2. Khởi động mockup-db
@@ -13,5 +14,6 @@ json-server --watch db.json
 #### 3. Khởi động client
 ```shell
 cd Client
+npm install
 npm start
 ```
