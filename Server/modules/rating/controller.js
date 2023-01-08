@@ -63,13 +63,13 @@ exports.getProductRating = async (req, res) => {
 exports.getUserProductRating = async(req,res)=>{
     try {
         const result = await service.getUserProductRating(req.query);
-     console.log(req.params)
+        console.log(req.params)
         res.status(200).json({
             success: true,
             messages: [result.message],
             content: {rated:result.content}
         })
-    } catch(err) {
+    } catch (err) {
         console.error(err);
         res.status(400).json({
             success: false,
