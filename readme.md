@@ -1,4 +1,6 @@
 # LTCT-Customer Service
+## Yêu cầu
+Cài đặt nodeJs version 16.14.2
 ## Cách chạy project
 #### 1. Khởi động server
 ```shell
