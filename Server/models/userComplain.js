@@ -20,8 +20,34 @@ const UserComplainSchema=new Schema({
     problemDescription:{
         type:String
     },
+    source:{
+        type:String
+    },
     status:{
-        type:Number
+        type:Number,
+        default:0
+    },
+    handler:{
+        shortDescription:{
+            type:String
+        },
+        solution:{
+            type:String
+        },
+        comment:{
+            type:String
+        },
+        reply:[{
+            userId:{
+                type:String
+            },
+            userName:{
+                type:String
+            },
+            content:{
+                type:String
+            }
+        }]
     }
 },{
     timestamps: true
