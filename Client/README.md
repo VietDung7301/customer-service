@@ -2,6 +2,7 @@
 Thực hiện với ví dụ tạo 1 trang helloworld
 ### 1. Viết mã nguồn trang
 Tạo mới 3 file `helloworld.component.html`, `helloworld.component.ts`, `helloworld.component.css`
+
 Thêm code vào file `helloworld.component.html`
 ```shell
 <h1>hello world</h1>
