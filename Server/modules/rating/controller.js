@@ -78,6 +78,43 @@ exports.getUserProductRating = async(req,res)=>{
         })
     }
 }
+exports.privateGetAllProductRating =async(req,res) => {
+    try {
+        const result = await service.privateGetAllProductRating ();
+        res.status(200).json({
+            success: true,
+            messages: ["Get Success"],
+            content: result
+        })
+    } catch (err) {
+        console.error(err);
+        res.status(400).json({
+            success: false,
+            messages: ["Get fail"],
+            content: err.messages
+        })
+    }
+
+}
+exports.privateGetProductRating =async(req,res) => {
+    try {
+        const result = await service.privateGetProductRating (req.params.ratingId);
+        res.status(200).json({
+            success: true,
+            messages: ["Get Success"],
+            content: result
+        })
+    } catch (err) {
+        console.error(err);
+        res.status(400).json({
+            success: false,
+            messages: ["Get fail"],
+            content: err.messages
+        })
+    }
+
+}
+
 exports.test = async(req, res) => {
     res.status(200).json({
         success: true,

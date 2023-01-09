@@ -16,9 +16,6 @@ const ProductRatingSchema = new Schema({
             orderId: {
                 type: String
             },
-            userName: {
-                type: String
-            },
             userId: {
                 type: String
             },
@@ -26,6 +23,9 @@ const ProductRatingSchema = new Schema({
                 type: Number
             },
             description: {
+                type: String
+            },
+            userName:{
                 type: String
             },
             handler: {

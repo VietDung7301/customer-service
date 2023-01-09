@@ -1,6 +1,8 @@
 import { DrawerFormBaseComponent } from './components/drawer-form-base/drawer-form-base.component';
 import { ProductDetailComponent } from './routes/home/product-detail/product-detail.component';
 import { ProductListComponent } from './routes/home/product-list/product-list.component';
+import { HelloWorldComponent } from './routes/test/helloworld.component';
+import { RequestComponent } from './routes/request/request.component';
 import { HomeComponent } from './routes/home/home.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,6 +29,8 @@ registerLocaleData(en);
     HomeComponent,
     DashboardComponent,
     ProductListComponent,
+    HelloWorldComponent,
+    RequestComponent,
     ProductDetailComponent,
     DrawerFormBaseComponent,
     RateListComponent,
