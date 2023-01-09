@@ -24,4 +24,4 @@ export class HelloWorldComponent implements OnInit{
 }
 ```
 ### 3. Import component vừa tạo
-Import vừa tạo vào `Client\src\app\app-routing.module.ts` và `Client\src\app\app.module.ts`
+Import component vừa tạo vào `Client\src\app\app-routing.module.ts` và `Client\src\app\app.module.ts`
