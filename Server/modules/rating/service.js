@@ -1,3 +1,4 @@
+const { ServerDescriptionChangedEvent } = require("mongodb");
 const ProductRating = require("../../models/productRating");
 
 /**
@@ -35,7 +36,7 @@ exports.createProductRating = async (data) => {
 		{$setOnInsert: defaultRating},
 		{upsert: true},
 	);
-
+	
 
 	// 2. Thêm đánh giá mới vào rating list
 	// new avgStar = (avgStar * (totalVote - 1) + starNumber) / totalVote
@@ -52,9 +53,14 @@ exports.createProductRating = async (data) => {
 		{
 			$set: {'avgStar': newAvgStar},
 			$inc: {'totalVote': 1},
-			$push: {'ratingList': newRating}
+			$push:{'ratingList': newRating}
 		}
 	);
+	let newProductRating=await ProductRating(DB_CONNECTION).findOne(
+		{'productId': data.productId}
+	);
+	return newProductRating
+
 }
 
 
@@ -126,4 +132,44 @@ exports.getUserProductRating = async(data) => {
 			message:"The user didn't rate this product previous"
 		}
 	}
+}
+/**
+* Lấy danh sách đánh giá của tất cả sản phẩm (Chỉ dùng trong nhóm)
+* @return {[{
+*   _id: String
+* 	productId: String,
+* 	userId: String,
+* 	userName: String,
+*   star:Number,
+*   orderId: String,
+*   description: String,
+*   handler: String,
+* }]} result
+*/
+exports.privateGetAllProductRating = async()=>{
+	let result = await ProductRating(DB_CONNECTION).aggregate([
+		{$project: {'ratingList._id': 1,'productId': 1, 'ratingList.userId': 1, 'ratingList.star': 1, 'ratingList.orderId': 1,'ratingList.description': 1,'ratingList.handler': 1,'ratingList.createdAt':1,'ratingList.updatedAt':1}},
+		{$unwind : {path:"$ratingList"} },
+		{$replaceRoot:  {newRoot:{ $mergeObjects:[{productId: "$productId" }, "$ratingList"]}}}
+	]);
+	return result;
+}
+/**
+ * Lấy thông tin chi tiết một đánh giá (Chỉ dùng trong nhóm)
+ * @param {string} ratingId
+ * @return {[{
+ *   _id:String,
+ *   productId: String,
+ *   userId: String,
+ *   userName: String,
+ *   star: Number
+ *   orderId: String,
+ *   description: String,
+ *   handler: String
+ * }]}result
+ */
+exports.privateGetProductRating = async(ratingId) =>{
+	let productInfor=await this.privateGetAllProductRating()	
+	let result=productInfor.find(object => object._id == ratingId)
+	return result
 }

@@ -19,6 +19,9 @@ const UserComplainSchema=new Schema({
     },
     problemDescription:{
         type:String
+    },
+    status:{
+        type:Number
     }
 },{
     timestamps: true
