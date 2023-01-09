@@ -42,7 +42,7 @@ exports.createProductRating = async (data) => {
 	// new avgStar = (avgStar * (totalVote - 1) + starNumber) / totalVote
 	let {totalVote, avgStar} = await ProductRating(DB_CONNECTION).findOne(
 		{'productId': data.productId},
-		{'totalVote': 1, 'avgStar': 1, '_id': 0}
+		{'totalVote': 1, 'avgStar': 1}
 	) || {totalVote: 0, avgStar: 0};
 
 	console.log(totalVote, avgStar)
@@ -74,7 +74,7 @@ exports.createProductRating = async (data) => {
  */
 exports.getAllProductRating = async () => {
 	let result = await ProductRating(DB_CONNECTION).aggregate([
-		{$project: {'productId': 1, 'avgStar': 1, 'totalVote': 1, '_id': 0}}
+		{$project: {'productId': 1, 'avgStar': 1, 'totalVote': 1}}
 	]);
 	return result;
 }
