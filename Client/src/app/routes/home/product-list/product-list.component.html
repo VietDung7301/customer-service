@@ -44,9 +44,9 @@
       </div>
       <div
         class="order__body mt-12 mb-12"
-        *ngFor="let product of order.productList; let i = index"
+        *ngFor="let product of order.products; let i = index"
       >
-        <div class="product-detail flr">
+        <a routerLink="../order-detail" [queryParams]="{orderId: order.orderId}"><div class="product-detail flr">
           <div class="product__img">
             <img
               [src]="product.productImageUrl"
@@ -62,7 +62,7 @@
               {{ product.description }}
             </div>
           </div>
-        </div>
+        </div></a>
         <div class="order__footer">
           <div class="rate-zone">
             <div class="total-cost"></div>
