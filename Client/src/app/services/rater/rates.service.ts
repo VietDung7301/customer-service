@@ -13,18 +13,17 @@ const httpOptions = {
 })
 export class RatesService {
   // baseUrl = 'http://localhost:3000/rates-list';
-  baseUrl = `${environment.apiURL}/sp07/product/rating`;
+  baseUrl = `${environment.apiURL}`;
 
   constructor(private http: HttpClient) {}
 
   getAllListRates() {
-    const res = this.http.get<any>(this.baseUrl).toPromise();
+    const res = this.http.get<any>(this.baseUrl + '/sp07/product/rating').toPromise();
     return res;
   }
 
   sendProductRate(data: any) {
-    console.log('posting');
-    return this.http.post<any[]>(this.baseUrl, data);
+    return this.http.post<any[]>(this.baseUrl + '/product/rating', data);
     // return this.http.post<any[]>(this.baseUrl, data, httpOptions);
   }
 
