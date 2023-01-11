@@ -19,13 +19,32 @@
           <th rowspan="2" [nzAlign]="'center'" nzWidth="3%">STT</th>
           <th rowspan="2" [nzAlign]="'center'">Thời gian</th>
           <th colspan="3">Thông tin đánh giá</th>
-          <th rowspan="2" [nzAlign]="'center'">Trạng thái</th>
+          <th
+            rowspan="2"
+            [nzAlign]="'center'"
+            [nzShowFilter]="true"
+            [nzFilterMultiple]="true"
+            [nzFilterFn]="filterFnStatus"
+            [nzFilters]="listOfFilterStatus"
+          >
+            Trạng thái
+          </th>
           <th rowspan="2" [nzAlign]="'center'">Hành động</th>
         </tr>
         <tr>
           <th [nzAlign]="'center'">Sản phẩm</th>
           <th [nzAlign]="'center'">Đánh giá</th>
-          <th [nzAlign]="'center'">Số sao</th>
+          <th
+            [nzAlign]="'center'"
+            [nzShowFilter]="true"
+            [nzFilterMultiple]="true"
+            [nzFilterFn]="filterFnStar"
+            [nzFilters]="listOfFilterStar"
+            [nzShowSort]="true"
+            [nzSortFn]="sortFnStar"
+          >
+            Số sao
+          </th>
           <!-- <th [nzAlign]="'center'">Người dùng</th> -->
         </tr>
       </thead>
@@ -82,7 +101,8 @@
             </button>
             <button
               *ngIf="data.status != RateStatus.NotYet"
-              nz-button (click)="$event.stopPropagation()"
+              nz-button
+              (click)="$event.stopPropagation()"
               nzType="dashed"
               nzDanger
               nz-tooltip
