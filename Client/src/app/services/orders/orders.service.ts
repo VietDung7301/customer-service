@@ -9,7 +9,7 @@ export class OrdersService {
   constructor(private http: HttpClient) {}
 
   getAllOrdersList(userId: string) {
-    return this.http.get(this.baseUrl);
+    return this.http.get<any[]>(this.baseUrl);
   }
 
   getOrderById(id: string) {

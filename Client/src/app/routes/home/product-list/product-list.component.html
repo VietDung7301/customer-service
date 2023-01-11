@@ -79,10 +79,13 @@
                     <button
                       class="default-button mr-12"
                       (click)="open(order.id, product.productId)"
-                      *ngIf="order.status == 'done'"
+                      *ngIf="order.status == 'Đã giao hàng'"
                     >
                       Đánh giá
                     </button>
+                  </div>
+                  <div class="contact-button">
+                    <button *ngIf="order.status == 'Hoàn thành'" class="second-button mr-12" (click)="open(order.id, product.productId)">Xem đánh giá</button>
                   </div>
                   <div class="contact-button">
                     <button class="second-button mr-12">Liên hệ</button>
