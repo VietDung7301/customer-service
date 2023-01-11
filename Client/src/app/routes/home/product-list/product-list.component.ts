@@ -4,6 +4,7 @@ import { OrdersService } from './../../../services/orders/orders.service';
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
+import { ActivatedRoute, Router } from '@angular/router';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -43,7 +44,9 @@ export class ProductListComponent implements OnInit {
   constructor(
     private message: NzMessageService,
     private ordersService: OrdersService,
-    private ratesService: RatesService
+    private ratesService: RatesService,
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -59,17 +62,20 @@ export class ProductListComponent implements OnInit {
     var response = await this.ordersService
       .getAllOrdersList('test')
       .toPromise();
-    this.orderList = response;
+    // this.orderList = response.content;
+    this.orderList = response; //to test
   }
 
   async getDetailOrder(id: string) {
     var response = await this.ordersService.getOrderById(id).toPromise();
-    this.currentOrder = response;
+    // this.currentOrder = response.content;
+    this.currentOrder = response; //to test
   }
 
   async getDetailProduct(orderId: string, productId: string) {
     var response = await this.ordersService.getOrderById(orderId).toPromise();
-    this.currentOrder = response;
+    // this.currentOrder = response.content;
+    this.currentOrder = response; //to test
 
     this.currentOrder.productList.forEach((product: any) => {
       if (product.productId == productId) {
@@ -185,5 +191,13 @@ export class ProductListComponent implements OnInit {
 
   createMessage(type: string, text: string): void {
     this.message.create(type, text);
+  }
+
+  testFunc() {
+    console.log("tsst");
+    console.log(this.router);
+
+    // this.router.navigate(['/order-detail']);
+
   }
 }

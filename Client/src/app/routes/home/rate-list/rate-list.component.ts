@@ -39,6 +39,26 @@ export class RateListComponent implements OnInit {
     private modal: NzModalService
   ) {}
 
+  listOfFilterStar = [
+    { text: '1 sao', value: 1 },
+    { text: '2 sao', value: 2 },
+    { text: '3 sao', value: 3 },
+    { text: '4 sao', value: 4 },
+    { text: '5 sao', value: 5 },
+  ];
+  filterFnStar = (list: string[], item: any) =>
+    list.some((starNumbers) => item.starNumbers == starNumbers);
+
+  sortFnStar = (a: any, b: any): number => a.starNumbers - b.starNumbers;
+
+  listOfFilterStatus = [
+    { text: 'Chưa xử lý', value: RateStatus.NotYet },
+    { text: 'Đã yêu cầu giải quyết', value: RateStatus.RequestSolve },
+    { text: 'Đã yêu cầu ẩn comment', value: RateStatus.RequestHide },
+  ];
+  filterFnStatus = (list: string[], item: any) =>
+    list.some((status) => item.status == status);
+
   async ngOnInit(): Promise<void> {
     await this.fetchData();
   }
@@ -46,11 +66,13 @@ export class RateListComponent implements OnInit {
   async fetchData() {
     var response = await this.ratesService.getAllListRates();
     console.log('response', response);
-    this.listOfData = response.content;
+    // this.listOfData = response.content;
+    this.listOfData = response; //to test
     var productResponse = await this.productsService
       .getAllProductsList()
       .toPromise();
-    this.listAllProduct = productResponse;
+    // this.listAllProduct = productResponse.content;
+    this.listAllProduct = productResponse; //to test
     this.listOfData.forEach((rate, index) => {
       var product = this.listAllProduct.find(
         (product) => product.id == rate.productId
@@ -110,7 +132,7 @@ export class RateListComponent implements OnInit {
       });
   }
 
-  async sendCancelRequest(data:any) {
+  async sendCancelRequest(data: any) {
     this.editingRate = data;
     var data = { ...this.editingRate, status: 0 };
     await this.ratesService

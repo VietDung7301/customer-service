@@ -44,9 +44,9 @@
       </div>
       <div
         class="order__body mt-12 mb-12"
-        *ngFor="let product of order.productList; let i = index"
+        *ngFor="let product of order.products; let i = index"
       >
-        <div class="product-detail flr">
+        <a routerLink="../order-detail" [queryParams]="{orderId: order.orderId}"><div class="product-detail flr">
           <div class="product__img">
             <img
               [src]="product.productImageUrl"
@@ -62,7 +62,7 @@
               {{ product.description }}
             </div>
           </div>
-        </div>
+        </div></a>
         <div class="order__footer">
           <div class="rate-zone">
             <div class="total-cost"></div>
@@ -79,10 +79,13 @@
                     <button
                       class="default-button mr-12"
                       (click)="open(order.id, product.productId)"
-                      *ngIf="order.status == 'done'"
+                      *ngIf="order.status == 'Đã giao hàng'"
                     >
                       Đánh giá
                     </button>
+                  </div>
+                  <div class="contact-button">
+                    <button *ngIf="order.status == 'Hoàn thành'" class="second-button mr-12" (click)="open(order.id, product.productId)">Xem đánh giá</button>
                   </div>
                   <div class="contact-button">
                     <button class="second-button mr-12">Liên hệ</button>
