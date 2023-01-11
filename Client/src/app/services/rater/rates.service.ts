@@ -13,7 +13,7 @@ const httpOptions = {
 })
 export class RatesService {
   baseUrl = 'http://localhost:3000/rates-list';
-  //baseUrl = `${environment.apiURL}/sp07/product/rating`;
+  // baseUrl = `${environment.apiURL}/sp07/product/rating`;
 
   constructor(private http: HttpClient) {}
 

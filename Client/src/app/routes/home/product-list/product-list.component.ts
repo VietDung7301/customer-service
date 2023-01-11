@@ -62,17 +62,20 @@ export class ProductListComponent implements OnInit {
     var response = await this.ordersService
       .getAllOrdersList('test')
       .toPromise();
-    this.orderList = response;
+    // this.orderList = response.content;
+    this.orderList = response; //to test
   }
 
   async getDetailOrder(id: string) {
     var response = await this.ordersService.getOrderById(id).toPromise();
-    this.currentOrder = response;
+    // this.currentOrder = response.content;
+    this.currentOrder = response; //to test
   }
 
   async getDetailProduct(orderId: string, productId: string) {
     var response = await this.ordersService.getOrderById(orderId).toPromise();
-    this.currentOrder = response;
+    // this.currentOrder = response.content;
+    this.currentOrder = response; //to test
 
     this.currentOrder.productList.forEach((product: any) => {
       if (product.productId == productId) {

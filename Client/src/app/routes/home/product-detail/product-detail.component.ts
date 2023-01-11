@@ -56,7 +56,8 @@ export class ProductDetailComponent implements OnInit {
       .getAllOrdersList('test')
       .toPromise()
       .then((result) => {
-        this.allOrderList = result;
+        // this.allOrderList = result.content;
+        this.allOrderList = result; //to test
         this.currentRateOrder = this.allOrderList.find(
           (order) => order.orderId === this.orderId
         );
@@ -112,8 +113,9 @@ export class ProductDetailComponent implements OnInit {
 
   async getDetailProductRate(orderId: string, productId: string) {
     var thisDetailVote = null;
-    var allRates = await this.ratesService.getAllListRates().toPromise();
-    allRates.forEach((element) => {
+    // var allRates = await this.ratesService.getAllListRates().toPromise();
+    var allRates = await this.ratesService.getAllListRates();
+    allRates.forEach((element:any) => {
       if (element.orderId == orderId && element.productId == productId) {
         thisDetailVote = element;
       }
