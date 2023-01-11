@@ -5,6 +5,12 @@ const ProductRatingSchema = new Schema({
     productId: {
         type: String
     },
+    productName: {
+        type: String
+    },
+    productImageUrl: {
+        type: String
+    },
     totalVote:{
         type: Number
     },
