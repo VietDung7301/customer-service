@@ -40,30 +40,13 @@ export class RateListComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    // var response = await this.ratesService.getAllListRates().toPromise();
-    // this.listOfData = response;
-    // var productResponse = await this.productsService
-    //   .getAllProductsList()
-    //   .toPromise();
-    // this.listAllProduct = productResponse;
-    // this.listOfData.forEach((rate, index) => {
-    //   var product = this.listAllProduct.find(
-    //     (product) => product.id == rate.productId
-    //   );
-    //   this.listOfData[index] = {
-    //     ...rate,
-    //     productName: product.name,
-    //     productImageUrl: product.imageUrl,
-    //   };
-    // });
-    // console.log(this.listOfData);
-    // this.listOfData = [...this.listOfData];
     await this.fetchData();
   }
 
   async fetchData() {
-    var response = await this.ratesService.getAllListRates().toPromise();
-    this.listOfData = response;
+    var response = await this.ratesService.getAllListRates();
+    console.log('response', response);
+    this.listOfData = response.content;
     var productResponse = await this.productsService
       .getAllProductsList()
       .toPromise();

@@ -91,8 +91,9 @@ export class ProductListComponent implements OnInit {
 
   async getDetailProductRate(orderId: string, productId: string) {
     var thisDetailVote = null;
-    var allRates = await this.ratesService.getAllListRates().toPromise();
-    allRates.forEach((element) => {
+    var allRates = await this.ratesService.getAllListRates();
+    allRates = allRates.content;
+    allRates.forEach((element:any) => {
       if (element.orderId == orderId && element.productId == productId) {
         thisDetailVote = element;
       }

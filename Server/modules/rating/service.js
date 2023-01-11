@@ -4,12 +4,14 @@ const ProductRating = require("../../models/productRating");
 /**
  * Thêm 1 đánh giá sản phẩm mới
  * @param {{
- *    userId: String,
- *	  userName: String,
- *    message: String,
- *    orderId: String,
- *    productId: String,
- *    starNumbers: Number
+ *	userId: String,
+ *	userName: String,
+ *	message: String,
+ *	orderId: String,
+ *	productId: String,
+ *	starNumbers: Number,
+ *	productName: String,
+ *	productImageUrl: String,	
  * }} data 
  * @returns new ProductRating
  */
@@ -21,12 +23,16 @@ exports.createProductRating = async (data) => {
 		description: data.message,
 		star: data.starNumbers,
 		userName: data.userName,
+		productName: data.productName,
+		productImageUrl: data.productImageUrl
 	};
 
 
 	// 1. Nếu productId chưa có trong DB, insert nó vào DB
 	let defaultRating = {
 		productId: data.productId,
+		productName: data.productName,
+		productImageUrl: data.productImageUrl,
 		totalVote: 0,
 		avgStar: 0,
 		ratingList: []
@@ -48,7 +54,7 @@ exports.createProductRating = async (data) => {
 	console.log(totalVote, avgStar)
 	let newAvgStar = (avgStar * totalVote + data.starNumbers) / (totalVote + 1);
 
-	let result = await ProductRating(DB_CONNECTION).updateOne(
+	await ProductRating(DB_CONNECTION).updateOne(
 		{'productId': data.productId},
 		{
 			$set: {'avgStar': newAvgStar},
@@ -56,7 +62,7 @@ exports.createProductRating = async (data) => {
 			$push:{'ratingList': newRating}
 		}
 	);
-	let newProductRating=await ProductRating(DB_CONNECTION).findOne(
+	let newProductRating = await ProductRating(DB_CONNECTION).findOne(
 		{'productId': data.productId}
 	);
 	return newProductRating
@@ -136,8 +142,10 @@ exports.getUserProductRating = async(data) => {
 /**
 * Lấy danh sách đánh giá của tất cả sản phẩm (Chỉ dùng trong nhóm)
 * @return {[{
-*   _id: String
+*   id: String
 * 	productId: String,
+*	productName: String,
+*	productImageUrl: String,
 * 	userId: String,
 * 	userName: String,
 *   star:Number,
@@ -148,16 +156,34 @@ exports.getUserProductRating = async(data) => {
 */
 exports.privateGetAllProductRating = async()=>{
 	let result = await ProductRating(DB_CONNECTION).aggregate([
-		{$project: {'ratingList._id': 1,'productId': 1, 'ratingList.userId': 1, 'ratingList.star': 1, 'ratingList.orderId': 1,'ratingList.description': 1,'ratingList.handler': 1,'ratingList.createdAt':1,'ratingList.updatedAt':1}},
 		{$unwind : {path:"$ratingList"} },
-		{$replaceRoot:  {newRoot:{ $mergeObjects:[{productId: "$productId" }, "$ratingList"]}}}
+		{$project: {
+			'ratingList.id': '$ratingList._id',
+			'productId': 1, 
+			'productName': 1,
+			'productImageUrl': 1,
+			'ratingList.userId': 1, 
+			'ratingList.starNumbers': '$ratingList.star', 
+			'ratingList.orderId': 1,
+			'ratingList.message': '$ratingList.description',
+			'ratingList.handler': 1,
+			'ratingList.postDate': '$ratingList.createdAt',
+			'ratingList.updatedAt': 1,
+		}},
+		{$replaceRoot:  {newRoot:{ 
+			$mergeObjects:[{
+				productId: "$productId", 
+				productName: "$productName",
+				productImageUrl: "$productImageUrl",
+			}, "$ratingList"]
+		}}}
 	]);
 	return result;
 }
 /**
  * Lấy thông tin chi tiết một đánh giá (Chỉ dùng trong nhóm)
  * @param {string} ratingId
- * @return {[{
+ * @return {{
  *   _id:String,
  *   productId: String,
  *   userId: String,
@@ -166,10 +192,10 @@ exports.privateGetAllProductRating = async()=>{
  *   orderId: String,
  *   description: String,
  *   handler: String
- * }]}result
+ * }}result
  */
 exports.privateGetProductRating = async(ratingId) =>{
 	let productInfor=await this.privateGetAllProductRating()	
-	let result=productInfor.find(object => object._id == ratingId)
+	let result=productInfor.find(object => object._id == ratingId);
 	return result
 }
