@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe } from '@angular/common';
 
 const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   new Promise((resolve, reject) => {
@@ -17,6 +18,7 @@ const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
+  providers: [DatePipe]
 })
 export class ProductListComponent implements OnInit {
   orderList: any;
@@ -46,7 +48,8 @@ export class ProductListComponent implements OnInit {
     private ordersService: OrdersService,
     private ratesService: RatesService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -112,8 +115,10 @@ export class ProductListComponent implements OnInit {
       const newRate: Rate = new Rate(
         orderId,
         productId,
+        this.datePipe.transform(new Date(), 'yyyy-MM-dd') || "",
         this.currentProductStarRate,
-        this.currentProductMessageRate
+        this.currentProductMessageRate,
+        0
       );
       this.ratesService.sendProductRate(newRate).subscribe((response) => {
         this.createMessage('success', 'Đánh giá đã được gửi đi thành công');
@@ -165,10 +170,10 @@ export class ProductListComponent implements OnInit {
   getOrderStatusLabel(statusType: string): string {
     var statusLabel;
     switch (statusType) {
-      case 'done':
+      case 'Đã giao hàng':
         statusLabel = 'Đã giao hàng thành công';
         break;
-      case 'shipping':
+      case 'Đang giao hàng':
         statusLabel = 'Đang giao hàng';
         break;
       default:

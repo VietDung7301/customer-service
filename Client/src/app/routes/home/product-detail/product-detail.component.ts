@@ -1,5 +1,7 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { DatePickerService } from 'ng-zorro-antd/date-picker/date-picker.service';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Rate } from 'src/app/model/rate';
@@ -17,6 +19,7 @@ const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
+  providers: [DatePipe]
 })
 export class ProductDetailComponent implements OnInit {
   allOrderList: any[] = [];
@@ -46,7 +49,8 @@ export class ProductDetailComponent implements OnInit {
     private ordersService: OrdersService,
     private message: NzMessageService,
 
-    private ratesService: RatesService
+    private ratesService: RatesService,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -93,8 +97,10 @@ export class ProductDetailComponent implements OnInit {
         const newRate: Rate = new Rate(
           orderId,
           productId,
+          this.datePipe.transform(new Date(), 'yyyy-MM-dd') || "",
           this.currentProductStarRate,
-          this.currentProductMessageRate
+          this.currentProductMessageRate,
+          0
         );
         this.ratesService.sendProductRate(newRate).subscribe((response) => {
           this.createMessage('success', 'Đánh giá đã được gửi đi thành công');

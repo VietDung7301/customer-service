@@ -2,35 +2,35 @@
   "products-list": [
     {
       "id": "0001",
-      "name": "Bàn chải điện",
-      "imageUrl": "https://phongreviews.com/wp-content/uploads/2020/11/ban-chai-danh-rang-dien.jpg",
+      "name": "QUẦN JEAN NAM TRƠN FORM SKIN",
+      "imageUrl": "https://routine.vn/media/catalog/product/cache/5de180fdba0e830d350bd2803a0413e8/1/0/10f20dpa100-1_1.jpg",
       "price": 800000,
       "quantity": 2,
-      "description": "abc description"
+      "description": "Có form ôm sát vào phần chân cũng như phần hông và đùi. Bên cạnh đó, dáng quần jean nam này có phần ống nhỏ dần từ đầu gối trở xuống nhưng ống quần phần này không quá bó vào chân."
     },
     {
       "id": "0002",
-      "name": "Chảo inox",
-      "imageUrl": "https://trihung.cdn.vccloud.vn/media/magefan_blog/2019/08/chao-inox-loai-nao-tot-nhat.jpg",
+      "name": "ÁO POLO NAM TAY NGẮN TRƠN FORM SLIM(update)",
+      "imageUrl": "https://routine.vn/media/catalog/product/cache/5de180fdba0e830d350bd2803a0413e8/1/0/10f20pol002cr1_honey_gold_2__1.jpg",
       "price": 400000,
       "quantity": 1,
-      "description": "abc description"
+      "description": "Có dáng áo slim fit với đặc trưng tôn lên dáng người cân đối cũng như phần vai rộng của phái nam. Sản phẩm này sẽ là lựa chọn hàng đầu của những chàng trai theo đuổi phong cách đơn giản"
     },
     {
       "id": "0003",
-      "name": "Nồi chiên không dầu",
-      "imageUrl": "https://www.noichienkhongdau.com/wp-content/uploads/2021/07/image.jpg",
+      "name": "Áo kaki kika",
+      "imageUrl": "https://routine.vn/media/catalog/product/cache/5de180fdba0e830d350bd2803a0413e8/1/0/10f20pol002cr1_honey_gold_2__1.jpg",
       "price": 600000,
       "quantity": 1,
-      "description": "abc description"
+      "description": "Sự kết hợp giữa chất vải cotton và spandex mang đến những ưu điểm vượt bậc cho tính năng sản phẩm như: Vải có độ bền cao, thấm hút mồ hôi và co giãn tốt."
     },
     {
       "id": "0004",
-      "name": "Bút chì kim",
-      "imageUrl": "https://www.sieuthianhduong.com/upload/files/But-chi-kim.jpg",
+      "name": "Áo kaki",
+      "imageUrl": "https://routine.vn/media/catalog/product/cache/5de180fdba0e830d350bd2803a0413e8/1/0/10f20pol002cr1_honey_gold_2__1.jpg",
       "price": 800000,
       "quantity": 2,
-      "description": "abc description"
+      "description": "Sự kết hợp giữa chất vải cotton và spandex mang đến những ưu điểm vượt bậc cho tính năng sản phẩm như: Vải có độ bền cao, thấm hút mồ hôi và co giãn tốt."
     }
   ],
   "orders-list": [
@@ -39,11 +39,11 @@
       "products": [
         {
           "productId": "0001",
-          "name": "Bàn chải điện",
-          "productImageUrl": "https://phongreviews.com/wp-content/uploads/2020/11/ban-chai-danh-rang-dien.jpg",
+          "productName": "QUẦN JEAN NAM TRƠN FORM SKIN",
+          "productImageUrl": "https://routine.vn/media/catalog/product/cache/5de180fdba0e830d350bd2803a0413e8/1/0/10f20dpa100-1_1.jpg",
           "price": 800000,
           "quantity": 2,
-          "description": "abc description"
+          "description": "Có form ôm sát vào phần chân cũng như phần hông và đùi. Bên cạnh đó, dáng quần jean nam này có phần ống nhỏ dần từ đầu gối trở xuống nhưng ống quần phần này không quá bó vào chân."
         }
       ],
       "orderTime": "Sun Nov 16 2022 09:00:00 GMT+0700",
@@ -54,19 +54,19 @@
       "products": [
         {
           "productId": "0002",
-          "name": "Chảo inox",
-          "productImageUrl": "https://trihung.cdn.vccloud.vn/media/magefan_blog/2019/08/chao-inox-loai-nao-tot-nhat.jpg",
+          "productName": "ÁO POLO NAM TAY NGẮN TRƠN FORM SLIM(update)",
+          "productImageUrl": "https://routine.vn/media/catalog/product/cache/5de180fdba0e830d350bd2803a0413e8/1/0/10f20pol002cr1_honey_gold_2__1.jpg",
           "price": 400000,
           "quantity": 1,
-          "description": "abc description"
+          "description": "Có dáng áo slim fit với đặc trưng tôn lên dáng người cân đối cũng như phần vai rộng của phái nam. Sản phẩm này sẽ là lựa chọn hàng đầu của những chàng trai theo đuổi phong cách đơn giản"
         },
         {
           "productId": "0003",
-          "name": "Nồi chiên không dầu",
-          "productImageUrl": "https://www.noichienkhongdau.com/wp-content/uploads/2021/07/image.jpg",
+          "productName": "Áo kaki kika",
+          "productImageUrl": "https://routine.vn/media/catalog/product/cache/5de180fdba0e830d350bd2803a0413e8/1/0/10f20pol002cr1_honey_gold_2__1.jpg",
           "price": 600000,
           "quantity": 1,
-          "description": "abc description"
+          "description": "Sự kết hợp giữa chất vải cotton và spandex mang đến những ưu điểm vượt bậc cho tính năng sản phẩm như: Vải có độ bền cao, thấm hút mồ hôi và co giãn tốt."
         }
       ],
       "orderTime": "Sun Nov 17 2022 09:00:00 GMT+0700",
@@ -77,11 +77,11 @@
       "products": [
         {
           "productId": "0004",
-          "name": "Bút chì kim",
-          "productImageUrl": "https://www.sieuthianhduong.com/upload/files/But-chi-kim.jpg",
+          "productName": "Áo kaki",
+          "productImageUrl": "https://routine.vn/media/catalog/product/cache/5de180fdba0e830d350bd2803a0413e8/1/0/10f20pol002cr1_honey_gold_2__1.jpg",
           "price": 800000,
           "quantity": 2,
-          "description": "abc description"
+          "description": "Sự kết hợp giữa chất vải cotton và spandex mang đến những ưu điểm vượt bậc cho tính năng sản phẩm như: Vải có độ bền cao, thấm hút mồ hôi và co giãn tốt."
         }
       ],
       "orderTime": "Sun Nov 16 2022 09:00:00 GMT+0700",
@@ -92,11 +92,11 @@
       "products": [
         {
           "productId": "0004",
-          "name": "Vở men",
-          "productImageUrl": "https://vn-test-11.slatic.net/p/1fd2283867d77fc2ed1d07bb98e92cb2.jpg",
+          "productName": "ÁO THUN NAM TAY NGẮN TRƠN FORM FITTED",
+          "productImageUrl": "https://routine.vn/media/catalog/product/cache/5de180fdba0e830d350bd2803a0413e8/1/0/10s21tsh019cr2_-_pumice_stone_29_.jpg",
           "price": 800000,
           "quantity": 2,
-          "description": "abc description"
+          "description": "Áo thun tay ngắn là một trong những item cơ bản không còn xa lạ thời trang thường ngày. Những chiếc áo thun t-shirt đầu tiên được ra đời vào những thập kỷ đầu của thế kỷ XX được dùng để làm áo lót của những người lính trong quân đội."
         }
       ],
       "orderTime": "Sun Nov 16 2022 09:00:00 GMT+0700",
@@ -104,73 +104,5 @@
     }
   ],
   "rates-list": [
-    {
-      "id": "0001",
-      "orderId": "3",
-      "productId": "0004",
-      "starNumbers": 3,
-      "message": "Chất lượng rất tốt",
-      "postDate": "2022-12-24",
-      "userId": "0001",
-      "userName": "saladle",
-      "status": 0,
-      "productName": "Bút chì kim",
-      "productImageUrl": "https://www.sieuthianhduong.com/upload/files/But-chi-kim.jpg"
-    },
-    {
-      "id": "0002",
-      "orderId": "2",
-      "productId": "0002",
-      "starNumbers": 1,
-      "message": "Địt mẹ, bán hàng thế này thì chịu rồi",
-      "postDate": "2022-12-25",
-      "userId": "0002",
-      "userName": "phamnhatsang",
-      "status": 2,
-      "productName": "Chảo inox",
-      "productImageUrl": "https://trihung.cdn.vccloud.vn/media/magefan_blog/2019/08/chao-inox-loai-nao-tot-nhat.jpg"
-    },
-    {
-      "orderId": "1",
-      "productId": "0001",
-      "starNumbers": 4,
-      "message": "Sao đặt màu xanh mà lại giao màu đỏ thế",
-      "postDate": "2022-12-28",
-      "id": "uWCGIJF",
-      "userId": "0003",
-      "userName": "hoangvietdung",
-      "status": 0,
-      "productName": "Bàn chải điện",
-      "productImageUrl": "https://phongreviews.com/wp-content/uploads/2020/11/ban-chai-danh-rang-dien.jpg"
-    },
-    {
-      "orderId": "1",
-      "productId": "0001",
-      "starNumbers": 4,
-      "message": "a",
-      "postDate": "2022-12-31",
-      "id": "2fweOFs",
-      "userId": "0004",
-      "userName": "toanNv",
-      "status": 1,
-      "productName": "Bàn chải điện",
-      "productImageUrl": "https://phongreviews.com/wp-content/uploads/2020/11/ban-chai-danh-rang-dien.jpg"
-    },
-    {
-      "orderId": "1",
-      "productId": "0001",
-      "starNumbers": 4,
-      "message": "a",
-      "id": "IOkNwPb",
-      "productName": "Bàn chải điện",
-      "productImageUrl": "https://phongreviews.com/wp-content/uploads/2020/11/ban-chai-danh-rang-dien.jpg",
-      "status": 0
-    },
-    {
-      "productId": "0004",
-      "starNumbers": 3,
-      "message": "Chất lượng rất tốt",
-      "id": "uiJ4EkH"
-    }
   ]
 }

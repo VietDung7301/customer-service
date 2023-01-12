@@ -1,11 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductsService {
-  baseUrl = 'http://localhost:3000/products-list';
+  baseUrl = `${environment.apiURL}/products-list`;
   constructor(private http: HttpClient) {}
 
   getAllProductsList() {
