@@ -33,14 +33,14 @@
       <div class="product-detail flr">
         <div class="product__img">
             <img
-              src="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              [src]="product.productImageUrl"
               alt="ảnh sản phẩm"
               height="100"
             />
           </div>
         <div class="product__info ml-12">
           <div class="product__name small-label">
-            {{ product.name }}
+            {{ product.productName }}
           </div>
           <div class="product__description">
             {{ product.description }}
@@ -101,14 +101,14 @@
         <div class="product-detail flr">
           <div class="product__img">
             <img
-              src="https://images.pexels.com/photos/417173/pexels-photo-417173.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              [src]="currentProduct?.productImageUrl"
               alt="ảnh sản phẩm"
               height="100"
             />
           </div>
           <div class="product__info ml-12">
             <div class="product__name small-label">
-              {{ currentProduct?.name }}
+              {{ currentProduct?.productName }}
             </div>
             <div class="product__description">
               {{ currentProduct?.description }}
