@@ -45,3 +45,7 @@
 .image-vote_text {
   font-size: 10px;
 }
+
+.order__body a {
+  color: #000;
+}

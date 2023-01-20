@@ -19,7 +19,7 @@ const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css'],
-  providers: [DatePipe]
+  providers: [DatePipe],
 })
 export class ProductDetailComponent implements OnInit {
   allOrderList: any[] = [];
@@ -53,23 +53,29 @@ export class ProductDetailComponent implements OnInit {
     private datePipe: DatePipe
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.orderId = this.route.snapshot.queryParamMap.get('orderId');
-    // console.log(this.orderId);
-    this.ordersService
-      .getAllOrdersList('test')
-      .toPromise()
-      .then((result) => {
-        // this.allOrderList = result.content;
-        this.allOrderList = result; //to test
-        this.currentRateOrder = this.allOrderList.find(
-          (order) => order.orderId === this.orderId
-        );
-        console.log(this.currentRateOrder);
-        if (this.currentRateOrder.products.length == 1) {
-          this.openDrawer(this.currentRateOrder.products[0]);
-        }
-      });
+    // this.ordersService
+    //   .getAllOrdersList('test')
+    //   .toPromise()
+    //   .then((result) => {
+    //     // this.allOrderList = result.content;
+    //     this.allOrderList = result; //to test
+    //     this.currentRateOrder = this.allOrderList.find(
+    //       (order) => order.orderId === this.orderId
+    //     );
+    //     if (this.currentRateOrder.products.length == 1) {
+    //       this.openDrawer(this.currentRateOrder.products[0]);
+    //     }
+    //   });
+
+    this.allOrderList = await this.ordersService.getAllOrdersList('test');
+    this.currentRateOrder = this.allOrderList.find(
+      (order) => order.orderId === this.orderId
+    );
+    if (this.currentRateOrder.products.length == 1) {
+      this.openDrawer(this.currentRateOrder.products[0]);
+    }
   }
 
   async openDrawer(product: any) {
@@ -97,7 +103,7 @@ export class ProductDetailComponent implements OnInit {
         const newRate: Rate = new Rate(
           orderId,
           productId,
-          this.datePipe.transform(new Date(), 'yyyy-MM-dd') || "",
+          this.datePipe.transform(new Date(), 'yyyy-MM-dd') || '',
           this.currentProductStarRate,
           this.currentProductMessageRate,
           0
@@ -121,7 +127,7 @@ export class ProductDetailComponent implements OnInit {
     var thisDetailVote = null;
     // var allRates = await this.ratesService.getAllListRates().toPromise();
     var allRates = await this.ratesService.getAllListRates();
-    allRates.forEach((element:any) => {
+    allRates.forEach((element: any) => {
       if (element.orderId == orderId && element.productId == productId) {
         thisDetailVote = element;
       }

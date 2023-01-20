@@ -64,7 +64,7 @@ export class ProductListComponent implements OnInit {
   async getListOrders(): Promise<void> {
     var response = await this.ordersService
       .getAllOrdersList('test')
-      .toPromise();
+
     // this.orderList = response.content;
     this.orderList = response; //to test
   }
