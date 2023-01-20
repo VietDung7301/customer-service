@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gửi yêu cầu</title>
+
 </head>
 
 <body>
@@ -20,45 +21,48 @@
             </div>
         </div>
 
-         <form class="content" id="feedback-form"> 
+         <form class="content" id="feedback-form" [formGroup]="complainForm"  (ngSubmit)="submitForm()">
             <div class=" com-padding content-container fb-problem ">
                 <label for="">* Bạn thắc mắc vấn đề nào</label>
-                <select id="problem-select" name="Select" >
+                <select id="problem-select" name="Select" (change)="showOrder()" formControlName="userProblem">
                     <option class="specific-problem" value="" selected disabled hidden>Chọn</option>
-                    <option class="specific-problem" value="1">Giao hàng và nhận hàng</option>
-                    <option class="specific-problem" value="2">Trả hàng và hoàn tiền</option>
-                    <option class="specific-problem" value="3">Thanh toán</option>
-                    <option class="specific-problem" id="app-error" value="4">Báo lỗi</option>
-                    <option class="specific-problem" value="5">Câu hỏi chung</option>
+                    <option class="specific-problem" value="1" >Giao hàng và nhận hàng</option>
+                    <option class="specific-problem" value="2" >Trả hàng và hoàn tiền</option>
+                    <option class="specific-problem" value="3" >Thanh toán</option>
+                    <option class="specific-problem" id="app-error" value="4" >Báo lỗi</option>
+                    <option class="specific-problem" value="5" >Câu hỏi chung</option>
                   </select>
             </div>
 
             <div class="com-padding content-container">
                 <label for="user-name">* Tên người dùng</label>
-                <input 
-                    type="text" id ="user-name" placeholder="Input" 
+                <input
+                    type="text" id ="user-name" placeholder="Input"
                     [value] = "userInfor?userInfor.name:''" required
+                    formControlName="userAccount"
+                    readonly
                 >
             </div>
 
             <div class="com-padding content-container">
                 <label for="email">* Địa chỉ email của bạn</label>
-                <input 
-                    type="email" id ="email" placeholder="Input" 
-                    [value] = "userInfor?userInfor.email:''"
+                <input
+                    type="email" id ="email" placeholder="Input"
+                    formControlName ="userEmail"
                     required
                 >
             </div>
 
-            <div class="com-padding content-container id-order">
+            <div class="com-padding content-container id-order" [class.display]="displayOrder">
                 <label for="">* ID đơn hàng</label>
-                <span class="fb-btn" id="open-order-btn">Chọn đơn hàng</span>
-                <input id="input-id-order" type="text" readonly>
+                <span class="fb-btn" id="open-order-btn" (click)="displayModal()">Chọn đơn hàng</span>
+                <input id="input-id-order" type="text" [class.display] ="displayInputId" formControlName="orderId" readonly>
             </div>
+
             <div class="com-padding content-container fb-content">
                 <label for="">* Nội dung phản hồi</label>
                 <p>Điền thêm nội dung chi tiết thắc mắc/ vấn đề của bạn</p>
-                <textarea name="" id="problem-description" form="feedback-form" cols="30" rows="10" placeholder="Input" required></textarea>
+                <textarea name="" id="problem-description" form="feedback-form" cols="30" rows="10" placeholder="Input" required formControlName="problemDescription"></textarea>
             </div>
 
             <div class="com-padding content-container up-file">
@@ -72,32 +76,39 @@
 
             <div class="send-button">
                 <button type="submit" >Gửi</button>
-            </div>       
+            </div>
         </form>
-       
+
     </div>
-    <div class="modal">
+    <div class="modal" [class.display]="display">
         <div class="order-component">
 
             <div class="order-header">
                 <h4>Danh sách đơn hàng</h4>
-                <i class="ti-close close-btn"></i>
-                <div class="order-option click-on" id="done-label">
+                <p class="close-btn"(click)="displayModal()">x</p>
+                <!-- <div class="order-option click-on" id="done-label">
                     <p>Đã giao</p>
                 </div>
                 <div class="order-option left" id="shipping-label">
                     <p>Đang giao</p>
-                </div>
+                </div> -->
 
             </div>
 
-            <div id="done-list" class="order-list">
-
+            <div id="done-list" class="order-list" *ngFor="let order of orders" >
+              <h3 class="order-id">Mã đơn hàng : {{order.orderId}}</h3>
+              <button #btn class="order-btn fb-btn" value="{{order.orderId}}" (click)="getOrderId(btn)">Lấy mã đơn hàng</button>
+              <div *ngFor="let product of order.products" class="product" >
+                <h4 class="product-name">Tên sản phẩm: {{product.productName}}</h4>
+                <img class="product-img" src="{{product.img}}" alt="" >
+                <p  class="product-price">Giá : {{product.price}}VND</p>
+              </div>
             </div>
-            <div id="shipping-list" class=" order-list">
+            <!-- <div id="shipping-list" class=" order-list">
 
-            </div>
+            </div> -->
         </div>
+
     </div>
 
 </body>

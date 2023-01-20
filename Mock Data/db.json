@@ -104,5 +104,14 @@
     }
   ],
   "rates-list": [
+    {
+      "productId": "0001",
+      "starNumbers": 5,
+      "message": "haha",
+      "postDate": "2023-01-20",
+      "status": 0,
+      "userName": "Toan blackpink",
+      "id": 1
+    }
   ]
 }
