@@ -38,9 +38,9 @@
                 <label for="user-name">* Tên người dùng</label>
                 <input
                     type="text" id ="user-name" placeholder="Input"
-                    [value] = "userInfor?userInfor.name:''" required
+                    [value] = "userInfor?userInfor.name:''"
                     formControlName="userAccount"
-                    readonly
+                    required
                 >
             </div>
 
@@ -48,6 +48,7 @@
                 <label for="email">* Địa chỉ email của bạn</label>
                 <input
                     type="email" id ="email" placeholder="Input"
+                    [value] = "userInfor?userInfor.email:''"
                     formControlName ="userEmail"
                     required
                 >
