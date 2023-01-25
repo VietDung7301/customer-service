@@ -103,6 +103,57 @@
       "status": "Đang giao hàng"
     }
   ],
-  "rates-list": [
+  "rates-list": [],
+  "requests-list": [
+    {
+      "id": 1000,
+      "userName": "dunghv",
+      "userEmail": "hunghv@gmail.com",
+      "userAvatar": "https://images.pexels.com/photos/3228769/pexels-photo-3228769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "content": "Sản phẩm sao cứ đểu đểu",
+      "staff": null,
+      "status": "waiting",
+      "sendOnDate": "Sun Nov 16 2022 09:00:00 GMT+0700"
+    },
+    {
+      "id": 1001,
+      "userName": "huyld",
+      "userEmail": "huyld@gmail.com",
+      "userAvatar": "https://images.pexels.com/photos/3228769/pexels-photo-3228769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "content": "Sản phẩm sao cứ xịn xịn",
+      "staff": "SangPN",
+      "status": "processing",
+      "sendOnDate": "Tue Jan 25 2023 09:00:00 GMT+0700"
+    },
+    {
+      "id": 1002,
+      "userName": "toanbd",
+      "userEmail": "toanbede@gmail.com",
+      "userAvatar": "https://images.pexels.com/photos/3228769/pexels-photo-3228769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "content": "Sao nhân viên nhắn tin không trả lời",
+      "staff": "ToanNV",
+      "status": "replied",
+      "sendOnDate": "Tue Jan 25 2023 13:51:00 GMT+0700"
+    },
+    {
+      "id": 1003,
+      "userName": "toanbd",
+      "userEmail": "toanbede@gmail.com",
+      "userAvatar": "https://images.pexels.com/photos/3228769/pexels-photo-3228769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "content": "Sao nhân viên nhắn tin không trả lời",
+      "staff": null,
+      "status": "waiting",
+      "sendOnDate": "Tue Jan 25 2023 11:51:00 GMT+0700"
+    },
+    {
+      "id": 1004,
+      "userName": "toanbd",
+      "userEmail": "toanbede@gmail.com",
+      "userAvatar": "https://images.pexels.com/photos/3228769/pexels-photo-3228769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "content": "Sao nhân viên nhắn tin không trả lời",
+      "staff": "ToanNV",
+      "status": "processing",
+      "sendOnDate": "Tue Jan 24 2023 13:51:00 GMT+0700"
+    }
   ]
 }
