@@ -19,3 +19,6 @@ cd Client
 npm install
 npm start
 ```
+
+#25/01/2023 (Mùng 4 Tết)
+Cầu chúc cho tất cả mọi người một năm bình an!
