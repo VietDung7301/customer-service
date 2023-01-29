@@ -64,7 +64,7 @@ export class ProductListComponent implements OnInit {
   async getListOrders(): Promise<void> {
     var response = await this.ordersService
       .getAllOrdersList('test')
-      .toPromise();
+
     // this.orderList = response.content;
     this.orderList = response; //to test
   }
@@ -113,12 +113,13 @@ export class ProductListComponent implements OnInit {
   sendProductRate(orderId: string, productId: string) {
     if (this.currentProductStarRate != 0) {
       const newRate: Rate = new Rate(
-        orderId,
-        productId,
-        this.datePipe.transform(new Date(), 'yyyy-MM-dd') || "",
-        this.currentProductStarRate,
-        this.currentProductMessageRate,
-        0
+
+          this.currentProductMessageRate,
+          orderId,
+          productId,
+          this.currentProductStarRate,
+          this.currentProduct.productName,
+          this.currentProduct.productImageUrl
       );
       this.ratesService.sendProductRate(newRate).subscribe((response) => {
         this.createMessage('success', 'Đánh giá đã được gửi đi thành công');

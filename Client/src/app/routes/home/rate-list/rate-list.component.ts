@@ -67,23 +67,23 @@ export class RateListComponent implements OnInit {
     var response = await this.ratesService.getAllListRates();
     console.log('response', response);
     // this.listOfData = response.content;
-    this.listOfData = response; //to test
-    var productResponse = await this.productsService
-      .getAllProductsList()
-      .toPromise();
-    // this.listAllProduct = productResponse.content;
-    this.listAllProduct = productResponse; //to test
-    this.listOfData.forEach((rate, index) => {
-      var product = this.listAllProduct.find(
-        (product) => product.id == rate.productId
-      );
-      this.listOfData[index] = {
-        ...rate,
-        productName: product.name,
-        productImageUrl: product.imageUrl,
-      };
-    });
-    this.listOfData = [...this.listOfData];
+    this.listOfData = response.content; //to test
+    // var productResponse = await this.productsService
+    //   .getAllProductsList()
+    //   .toPromise();
+    // // this.listAllProduct = productResponse.content;
+    // this.listAllProduct = productResponse; //to test
+    // this.listOfData.forEach((rate, index) => {
+    //   var product = this.listAllProduct.find(
+    //     (product) => product.id == rate.productId
+    //   );
+    //   this.listOfData[index] = {
+    //     ...rate,
+    //     productName: product.name,
+    //     productImageUrl: product.imageUrl,
+    //   };
+    // });
+    // this.listOfData = [...this.listOfData];
   }
 
   openDrawer(data: ProductRate) {

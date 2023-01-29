@@ -204,7 +204,7 @@
     <button class="second-button mr-12" (click)="closeDrawer()">Hủy bỏ</button>
     <button
       class="default-button"
-      (click)="sendProductRate(currentRateOrder.id, currentProduct.productId)"
+      (click)="sendProductRate(currentRateOrder.orderId, currentProduct.productId)"
     >
     <ng-container [ngSwitch]="disabledForm">
       <div *ngSwitchCase="true">Hoàn tất</div>

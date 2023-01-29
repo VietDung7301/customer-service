@@ -53,24 +53,21 @@ export class ProductDetailComponent implements OnInit {
     private datePipe: DatePipe
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.orderId = this.route.snapshot.queryParamMap.get('orderId');
-    // console.log(this.orderId);
-    this.ordersService
-      .getAllOrdersList('test')
-      .toPromise()
-      .then((result) => {
-        // this.allOrderList = result.content;
-        this.allOrderList = result; //to test
-        this.currentRateOrder = this.allOrderList.find(
-          (order) => order.orderId === this.orderId
-        );
-        console.log(this.currentRateOrder);
-        if (this.currentRateOrder.products.length == 1) {
-          this.openDrawer(this.currentRateOrder.products[0]);
-        }
-      });
+
+
+    this.allOrderList = await this.ordersService.getAllOrdersList('test');
+
+    console.log('allOrderList', this.allOrderList);
+    this.currentRateOrder = this.allOrderList.find(
+      (order) => order.orderId == this.orderId
+    );
+    if (this.currentRateOrder.products.length == 1) {
+      this.openDrawer(this.currentRateOrder.products[0]);
+    }
   }
+
 
   async openDrawer(product: any) {
     this.currentProductRate = null;
@@ -95,13 +92,15 @@ export class ProductDetailComponent implements OnInit {
     if (!this.disabledForm) {
       if (this.currentProductStarRate != 0) {
         const newRate: Rate = new Rate(
+
+          this.currentProductMessageRate,
           orderId,
           productId,
-          this.datePipe.transform(new Date(), 'yyyy-MM-dd') || "",
           this.currentProductStarRate,
-          this.currentProductMessageRate,
-          0
+          this.currentProduct.productName,
+          this.currentProduct.productImageUrl
         );
+        console.log('current productRate' ,this.currentProduct);
         this.ratesService.sendProductRate(newRate).subscribe((response) => {
           this.createMessage('success', 'Đánh giá đã được gửi đi thành công');
           console.log('success');
@@ -120,12 +119,14 @@ export class ProductDetailComponent implements OnInit {
   async getDetailProductRate(orderId: string, productId: string) {
     var thisDetailVote = null;
     // var allRates = await this.ratesService.getAllListRates().toPromise();
-    var allRates = await this.ratesService.getAllListRates();
+    var  allRates = await this.ratesService.getAllListRates();
+    // var  allRates = res;
     allRates.forEach((element:any) => {
       if (element.orderId == orderId && element.productId == productId) {
         thisDetailVote = element;
       }
     });
+    console.log('this DetailVote', thisDetailVote);
     return thisDetailVote;
   }
 }

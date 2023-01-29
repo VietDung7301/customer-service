@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiURL: 'http://localhost:3000'
+  orderAPI: 'http://103.179.173.95:8081/api/listOrderByUser/2',
+  apiURL :'http://localhost:8000'
 };
 
 /*
