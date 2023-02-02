@@ -32,6 +32,20 @@ export class OrdersService {
     return listData;
   }
 
+  async getAllOrdersList(userId: string) {
+    var listData: any;
+    await this.getAllOrdersListFromAPI(userId)
+      .toPromise()
+      .then((result) => {
+        listData = result;
+        listData!.forEach((e: any) => {
+          e.id = e.orderId;
+          // delete e.orderId;
+        });
+      });
+    return listData;
+  }
+
   getOrderById(id: string) {
     return this.http.get<any[]>(`${this.baseUrl}/${id}`);
   }

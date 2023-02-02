@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './routes/home/dashboard/dashboard.component';
 import { RateListComponent } from './routes/home/rate-list/rate-list.component';
+import { RequestListComponent } from './routes/home/request-list/request-list.component';
 
 const routes: Routes = [
   { path: 'test', component: HelloWorldComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'order-detail', component: ProductDetailComponent },
       { path: 'rate-list', component: RateListComponent },
       { path: 'request', component: RequestComponent},
+      { path: 'request-list', component: RequestListComponent},
     ],
   },
 ];

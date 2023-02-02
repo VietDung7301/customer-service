@@ -21,6 +21,7 @@ import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { DashboardComponent } from './routes/home/dashboard/dashboard.component';
 import { RateListComponent } from './routes/home/rate-list/rate-list.component';
 import { RateDetailDrawerComponent } from './routes/home/rate-list/partials/rate-detail-drawer/rate-detail-drawer.component';
+import { RequestListComponent } from './routes/home/request-list/request-list.component';
 
 registerLocaleData(en);
 
@@ -35,7 +36,8 @@ registerLocaleData(en);
     ProductDetailComponent,
     DrawerFormBaseComponent,
     RateListComponent,
-    RateDetailDrawerComponent
+    RateDetailDrawerComponent,
+    RequestListComponent
   ],
   imports: [
     BrowserModule,
