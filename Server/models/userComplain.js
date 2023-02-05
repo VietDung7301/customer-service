@@ -8,10 +8,16 @@ const UserComplainSchema=new Schema({
     userAccount:{
         type:String
     },
+    userName:{
+        type:String
+    },
     userProblem:{
         type:Number
     },
     userEmail:{
+        type:String
+    },
+    userAvatar:{
         type:String
     },
     orderId:{
@@ -27,6 +33,14 @@ const UserComplainSchema=new Schema({
         type:Number,
         default:0
     },
+    attributes:[{
+        key:{
+            type:String
+        },
+        value:{
+            type:String
+        }
+    }],
     handler:{
         shortDescription:{
             type:String
@@ -38,15 +52,16 @@ const UserComplainSchema=new Schema({
             type:String
         },
         reply:[{
-            userId:{
+            staffId:{
                 type:String
             },
-            userName:{
+            staffName:{
                 type:String
             },
             content:{
                 type:String
             }
+            
         }]
     }
 },{

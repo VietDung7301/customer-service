@@ -80,3 +80,100 @@ exports.createUserComplain = async (data) => {
 		return newUserComplain
 	}
 }
+/**
+ * Lấy danh sach request:
+ * @returns {{[
+ * id:String,
+ * userName:String,
+ * userEmail:String,
+ * userAvatar:String,
+ * content:String,
+ * staff:String,
+ * status:String,
+ * sendOnDate:Date
+ * ]}} 
+ */
+exports.getListRequest = async () => {
+	let result = await UserComplain(DB_CONNECTION).aggregate([
+		{$unwind : {path:"$handler.reply"}},
+		{$project: {
+			'id':'$_id',
+			'userName': 1, 
+			'userEmail': 1,
+			'userAvatar': 1,
+			'content': '$problemDescription', 
+			'staff': '$handler.reply.staffName', 
+			'status': 1,
+			'sendOnDate':'$createdAt'
+		}},
+		{$addFields: {
+			"status": {
+			$switch: {
+			branches: [
+			{case: {$eq: ["$status", 0]}, then: "waiting"},
+			{case: {$eq: ["$status", 1]}, then: "processing"},
+			{case: {$eq: ["$status", 2]}, then: "replied"}
+			],
+			default: ""
+			}
+			}
+			}},
+		{$replaceRoot:  {newRoot:{ 
+			"id": "$id",
+            "userEmail": "$userEmail",
+            "userAvatar": "$userAvatar",
+            "status": "$status",
+            "userName": "$userName",
+            "content": "$content",
+            "staff": "$staff",
+            "sendOnDate": "$sendOnDate"
+		}}}
+	]);
+	
+	return result;
+}
+/**
+ * cập nhật  request:
+ * @param {{id,userName,userEmail,userAvatar,content,staff}} data
+ * @returns {{[
+* id:String,
+* userName:String,
+* userEmail:String,
+* userAvatar:String,
+* content:String,
+* staff:String,
+* status:String,
+* sendOnDate:Date
+* ]}}data
+*/
+exports.updateRequest = async (data)=> {
+	        if(data){
+		         let updateValue;
+            if (data.condition === "waitting") {
+                     updateValue = { status: 0 };
+               } else if (data.condition === "processing") {
+                     updateValue = { status: 1 };
+               } else if (data.condition === "replied") {
+                     updateValue = { status: 2 };
+               }else{
+				     updateValue = { status: -1 };
+			   }
+		await UserComplain(DB_CONNECTION).updateOne(
+		{'_id': data.id},
+		{
+		   $set: {  userName:   data.userName,
+			        userEmail:  data.userEmail,
+					userAvatar: data.userAvatar,
+					createdAt: new Date(data.sendOnDate),
+					updateValue,
+			        "handler.reply.0.staffName": data.staff, 
+		            "handler.reply.0.content": data.content  
+				 }
+		}
+		);
+
+       return data;
+		  
+
+    }
+}
