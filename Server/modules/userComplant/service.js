@@ -102,7 +102,7 @@ exports.getListRequest = async () => {
 			'userEmail': 1,
 			'userAvatar': 1,
 			'content': '$problemDescription', 
-			'staff': '$handler.reply.staffName', 
+			'staff': '$staffName', 
 			'status': 1,
 			'sendOnDate':'$createdAt'
 		}},
@@ -144,9 +144,10 @@ exports.getListRequest = async () => {
 * staff:String,
 * status:String,
 * sendOnDate:Date
-* ]}}data
+* ]}}result
 */
 exports.updateRequest = async (data)=> {
+	let result;
 	        if(data){
 		         let updateValue;
             if (data.condition === "waitting") {
@@ -164,15 +165,25 @@ exports.updateRequest = async (data)=> {
 		   $set: {  userName:   data.userName,
 			        userEmail:  data.userEmail,
 					userAvatar: data.userAvatar,
+					staffName:  data.staff,
+					problemDescription:data.content,
 					createdAt: new Date(data.sendOnDate),
 					updateValue,
-			        "handler.reply.0.staffName": data.staff, 
-		            "handler.reply.0.content": data.content  
 				 }
+		},
+		function(err, docs) {
+			if (err) {
+				console.error(err);
+				result=null;
+			}else{
+				result=data;
+			}
+			result=null;
+			   
 		}
-		);
+		).clone();
 
-       return data;
+        return result;
 		  
 
     }
