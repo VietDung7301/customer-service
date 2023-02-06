@@ -93,7 +93,7 @@ export class RequestComponent implements OnInit{
   public submitForm(){
         const data ={
           userId : this.userId,
-          userAccount : this.userInfor.name,
+          userAccount : this.complainForm.value.userAccount,
           userProblem : this.complainForm.value.userProblem,
           userEmail : this.complainForm.value.userEmail,
           orderId : this.complainForm.value.orderId,
