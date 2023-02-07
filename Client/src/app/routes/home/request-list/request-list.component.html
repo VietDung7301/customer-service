@@ -122,7 +122,7 @@
             <td>
               <div class="user-detail flr">
                 <img
-                  [src]="data.userAvatar"
+                  [src]="data.userAvatar?data.userAvatar:defaultAvatar"
                   alt="Ảnh đại diện"
                   class="user__avatar mr-12"
                 />

@@ -22,11 +22,7 @@ exports.getListRequest = async (req, res)=>{
     try{
         console.log(req.body);
         const listRequest = await service.getListRequest();
-        res.status(201).json({
-            success: true,
-            messages: ["Get success"],
-            content: listRequest
-        })
+        res.status(201).json(listRequest)
     }catch(error){
         console.log(error);
         res.status(400).json({
@@ -40,11 +36,7 @@ exports.updateRequest = async (req, res)=>{
     try{
         console.log(req.body);
         const newRequest = await service.updateRequest(req.body);
-        res.status(201).json({
-            success: true,
-            messages: ["Update success"],
-            content: newRequest
-        })
+        res.status(201).json(newRequest)
     }catch(error){
         console.log(error);
         res.status(400).json({

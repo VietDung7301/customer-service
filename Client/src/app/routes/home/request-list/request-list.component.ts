@@ -30,6 +30,7 @@ export class RequestListComponent implements OnInit {
   Role = Role;
   ViewMode = ViewMode;
   viewMode: ViewMode = ViewMode.All;
+  defaultAvatar: string = '../../../../assets/avatar.png'
 
   listEmployee = ['ToanNV', 'SangPN'];
   constructor(
