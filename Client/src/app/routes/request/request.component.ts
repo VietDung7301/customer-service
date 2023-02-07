@@ -17,6 +17,8 @@ export class RequestComponent implements OnInit{
   display = false;
   displayOrder = false;
   displayInputId = false;
+  displayPopUpSucc = false;
+  displayPopUpFail = false;
   complainForm = new FormGroup({
     userProblem : new FormControl(''),
     userAccount: new FormControl(''),
@@ -104,6 +106,18 @@ export class RequestComponent implements OnInit{
 
         this.orderService.postData(data).subscribe((res) =>{
           console.log('du lieu tra ve', res);
+          this.popUpShow(res);
        })
+  }
+
+  public popUpShow(res : any){
+    if(res.success == true){
+      this.displayPopUpSucc = true;
+    }else{
+      this.displayPopUpFail = true;
+    }
+  }
+  public reloadPage(){
+    location.reload();
   }
 }

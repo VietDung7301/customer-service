@@ -5,6 +5,7 @@ html {
 
 body {
     background-color: #eee;
+    position: relative;;
 }
 
 .click-on {
@@ -197,7 +198,6 @@ body {
 
 .modal {
     position: fixed;
-    display: block;
     align-items: center;
     top: 0;
     bottom: 0;
@@ -304,4 +304,47 @@ body {
 
 .product {
     border-bottom: 1px #ccc solid;
+}
+
+.pop-up{
+  position: fixed;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgb(0 0 0 / 19%);
+  display: none;
+  /* overflow: scroll; */
+  z-index: 999;
+  /* width: 400px; */
+}
+
+.pop-up-content{
+  width: 400px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px ;
+  background-color: white;
+  box-shadow: 0 4px 10px 0 rgb(0 0 0 / 20%), 0 4px 20px 0 rgb(0 0 0 / 19%);
+  text-align: center;
+}
+
+.pop-up-content p{
+  padding-top: 80px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.pop-up-content button{
+  padding: 8px;
+  background-color: #ee4d2d;
+  border: 0px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.pop-up-content button:hover{
+  cursor: pointer;
 }
