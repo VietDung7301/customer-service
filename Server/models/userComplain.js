@@ -33,6 +33,15 @@ const UserComplainSchema=new Schema({
         type:Number,
         default:0
     },
+    staffName:{
+        type:String
+    },
+    staffId:{
+        type:String
+    },
+    staffImageUrl:{
+        type:String
+    },
     attributes:[{
         key:{
             type:String
@@ -60,8 +69,14 @@ const UserComplainSchema=new Schema({
             },
             content:{
                 type:String
+            },
+            staffImageUrl:{
+                type:String
             }
+
             
+        },{
+            timestamps:true
         }]
     }
 },{

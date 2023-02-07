@@ -3,6 +3,6 @@ const router = express.Router();
 const controller = require('./controller');
 
 router.post('/user/complain',controller.createUserComplain);
-router.get('/user/complain',controller.getListRequest);
-router.put('/user/complain',controller.updateRequest);
+router.get('/user/complain/request',controller.getListRequest);
+router.put('/user/complain/update',controller.updateRequest);
 module.exports = router;
