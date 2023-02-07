@@ -72,15 +72,11 @@ const UserComplainSchema=new Schema({
             },
             staffImageUrl:{
                 type:String
-            },
-            createdAt:{
-                type:Date
-            },
-            updatedAt:{
-                type:Date
             }
 
             
+        },{
+            timestamps:true
         }]
     }
 },{
