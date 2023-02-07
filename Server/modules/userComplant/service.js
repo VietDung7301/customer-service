@@ -10,12 +10,37 @@ const {sendEmail} = require("../helpers/email");
  */
 exports.createUserComplain = async (data) => {
 	if (data) {
-		// 1. Lưu complain vào database
+		// 1.Convert data dung theo model
+		let dataConvert={
+			userId:data.userId,
+			userAccount:data.userAccount,
+			userName:data.userName || null,
+			userProblem:data.userProblem,
+			userEmail:data.userEmail,
+			userAvatar:data.userAvatar,
+			orderId:data.orderId,
+			problemDescription:data.problemDescription,
+			source:null,
+			status:0,
+			staffName:null,
+			staffId:null,
+			staffImageUrl:null,
+			attributes:[{
+			}],
+			handler:{
+				shortDescription:null,
+				solution:null,
+				comment:null,
+				reply:[]
+			
+		}
+	}
+		// 2. Lưu complain vào database
 		let newData = await UserComplain(DB_CONNECTION).create(data)
 		let newUserComplain = await UserComplain(DB_CONNECTION).findById({_id: newData._id})
 
 
-		// 2. Gửi mail thông báo cho người dùng
+		// 3. Gửi mail thông báo cho người dùng
 		let emailTo = data.userEmail;
 		let subject = '[Hệ thống bán hàng AS-K64][Đã ghi nhận yêu cầu]';
 		let html = `<html>
@@ -95,7 +120,6 @@ exports.createUserComplain = async (data) => {
  */
 exports.getListRequest = async () => {
 	let result = await UserComplain(DB_CONNECTION).aggregate([
-		{$unwind : {path:"$handler.reply"}},
 		{$project: {
 			'id':'$_id',
 			'userName': 1, 
@@ -127,7 +151,14 @@ exports.getListRequest = async () => {
             "content": "$content",
             "staff": "$staff",
             "sendOnDate": "$sendOnDate"
-		}}}
+		}}},{$set: {
+			userName: {$ifNull: ["$userName", null]},
+			userEmail: {$ifNull: ["$userEmail", null]},
+			userAvatar: {$ifNull: ["$userAvatar", null]},
+			content: {$ifNull: ["$content", null]},
+			staff: {$ifNull: ["$staff", null]},
+			sendOnDate: {$ifNull: ["$sendOnDate", null]}
+			}}
 	]);
 	
 	return result;
@@ -162,12 +193,12 @@ exports.updateRequest = async (data)=> {
 		await UserComplain(DB_CONNECTION).updateOne(
 		{'_id': data.id},
 		{
-		   $set: {  userName:   data.userName,
+		   $set: {  
+			        userName:   data.userName,
 			        userEmail:  data.userEmail,
 					userAvatar: data.userAvatar,
 					staffName:  data.staff,
 					problemDescription:data.content,
-					createdAt: new Date(data.sendOnDate),
 					updateValue,
 				 }
 		},
@@ -178,8 +209,7 @@ exports.updateRequest = async (data)=> {
 			}else{
 				result=data;
 			}
-			result=null;
-			   
+		
 		}
 		).clone();
 
