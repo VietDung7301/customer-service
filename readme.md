@@ -1,6 +1,6 @@
 # LTCT-Customer Service
 ## Yêu cầu
-Cài đặt nodeJs version 16.14.2
+Cài đặt nodeJs version 16.14.2 (Nếu sử dụng node khác có thể xảy ra tình trạng không tương thích phiên bản
 ## Cách chạy project
 #### 1. Khởi động server
 ```shell
@@ -8,19 +8,18 @@ cd Server
 npm install
 npm run dev
 ```
-#### 2. Khởi động mockup-db
+Bước này có thể bị lỗi vì chưa cài đặt nodemon, chạy lệnh sau để cài đặt nodemon:
 ```shell
-cd 'Mock Data'
-json-server --watch db.json
+npm i nodemon
 ```
-#### 3. Khởi động client
+#### 2. Khởi động client
 ```shell
 cd Client
 npm install
 npm start
 ```
 
-#### 4. Cách thêm một màn mới trong Client
+## Khi muốn thêm 1 tab mới
 - Tất cả các màn hình giao diện được lưu trong Client/src/app/routes/home (vd: Client/src/app/routes/home/dashboard)
 - Để tạo một màn mới thực hiện các bước sau:
 	+ Bước 1: Mở shell (cd Client)
