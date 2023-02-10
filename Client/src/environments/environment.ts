@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  orderAPI: 'http://103.179.173.95:8081/api/listOrderByUser/2',
+  orderAPI: 'http://103.179.173.95:81/api/listOrderByUser/2',
   apiURL :'http://localhost:8000'
 };
 

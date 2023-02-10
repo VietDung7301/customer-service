@@ -2,6 +2,14 @@ const UserComplain = require("../../models/userComplain");
 const UserProduct = require("../../models/userProduct");
 const {sendEmail} = require("../helpers/email");
 
+problemType = [
+	"Giao hàng và nhận hàng",
+	"Trả hàng và hoàn tiền",
+	"Thanh toán",
+	"Báo lỗi",
+	"Câu hỏi chung"
+];
+
 
 /**
  * Thêm complain mới từ người dùng:
@@ -86,7 +94,7 @@ exports.createUserComplain = async (data) => {
 				  <p>Thân chào ${data.userAccount},
 					  chúng tôi đã nhận được yêu cầu của bạn:
 				  </p>
-				  <p><b>Vấn đề bạn gặp phải: </b>${data.userProblem}
+				  <p><b>Vấn đề bạn gặp phải: </b>${problemType[data.userProblem - 1]}
 				  <br>
 				  <b>Mô tả vấn đề: </b>${data.problemDescription}
 				  </p>

@@ -1,5 +1,5 @@
-import { ProductDetailComponent } from './routes/home/product-detail/product-detail.component';
-import { ProductListComponent } from './routes/home/product-list/product-list.component';
+import { ProductDetailComponent } from './routes/home/order-detail/order-detail.component';
+import { ProductListComponent } from './routes/home/product-list/order-list.component';
 import { HelloWorldComponent } from './routes/test/helloworld.component';
 import { RequestComponent } from './routes/request/request.component';
 import { HomeComponent } from './routes/home/home.component';
