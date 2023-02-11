@@ -7,7 +7,7 @@ import { FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-test',
   templateUrl: './request.component.html',
-  styleUrls: ['./request.component.css', './fonts/themify-icons-font/themify-icons.css']
+  styleUrls: ['./request.component.css']
 })
 export class RequestComponent implements OnInit{
   userInfor: any;
