@@ -9,5 +9,5 @@ router.get('/product/rating',controller.getAllProductRating);
 router.get('/product/user-rating',controller.getUserProductRating);
 router.get('/product/rating/:id',controller.getProductRating);
 
-router.patch('/processTransaction', controller.test);
+router.get('', controller.test);
 module.exports = router;

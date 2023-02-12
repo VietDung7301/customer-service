@@ -116,17 +116,6 @@ exports.privateGetProductRating =async(req,res) => {
 
 exports.test = async(req, res) => {
     res.status(200).json({
-        errorCode: "00",
-        transaction: {
-            cardCode: "12398471209834",
-            owner: "Viet Dung",
-            command: "pay",
-            cvvCode: "123",
-            dateExpired: "1020",
-            transactionId: "AWOIFJ2098209134",
-            transactionContent: "11/22",
-            amount: "100000",
-            createdAt: "2020-11-4 10:55:26"
-        }
+        message: "Server is running"
     })
 }
