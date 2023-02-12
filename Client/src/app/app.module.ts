@@ -1,11 +1,12 @@
 import { DrawerFormBaseComponent } from './components/drawer-form-base/drawer-form-base.component';
-import { ProductDetailComponent } from './routes/home/product-detail/product-detail.component';
-import { ProductListComponent } from './routes/home/product-list/product-list.component';
+import { ProductDetailComponent } from './routes/home/order-detail/order-detail.component';
+import { ProductListComponent } from './routes/home/product-list/order-list.component';
 import { HelloWorldComponent } from './routes/test/helloworld.component';
 import { RequestComponent } from './routes/request/request.component';
 import { HomeComponent } from './routes/home/home.component';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,7 @@ import { NgZorroAntdModule } from './ng-zorro-antd.module';
 import { DashboardComponent } from './routes/home/dashboard/dashboard.component';
 import { RateListComponent } from './routes/home/rate-list/rate-list.component';
 import { RateDetailDrawerComponent } from './routes/home/rate-list/partials/rate-detail-drawer/rate-detail-drawer.component';
+import { RequestListComponent } from './routes/home/request-list/request-list.component';
 
 registerLocaleData(en);
 
@@ -34,7 +36,8 @@ registerLocaleData(en);
     ProductDetailComponent,
     DrawerFormBaseComponent,
     RateListComponent,
-    RateDetailDrawerComponent
+    RateDetailDrawerComponent,
+    RequestListComponent
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     NgZorroAntdModule,
+    ReactiveFormsModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent],

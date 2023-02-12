@@ -3,8 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  apiURL: 'https://odd-week-production.up.railway.app'
+  production: true,
+  orderAPI: 'http://103.179.173.95:81/api/listOrderByUser/2',
+  apiURL :'http://localhost:8000'
 };
 
 /*

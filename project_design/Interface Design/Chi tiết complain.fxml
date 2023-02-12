@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="943.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <ImageView fitHeight="500.0" fitWidth="220.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@source/Screenshot%202023-01-19%20214250.png" />
+         </image>
+      </ImageView>
+   </left>
+   <center>
+      <VBox prefHeight="500.0" prefWidth="481.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="170.0" prefWidth="494.0" spacing="25.0" style="-fx-background-color: #fff;">
+               <children>
+                  <HBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="459.0" spacing="20.0" style="-fx-background-color: #fff;">
+                     <children>
+                        <ImageView fitHeight="45.0" fitWidth="47.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@source/3135715.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER_LEFT" prefHeight="58.0" prefWidth="130.0" spacing="5.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Việt Dũng">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Vấn đề: Bảo hành, đổi trả sp">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ID đơn hàng: SPX02123412">
+                                 <font>
+                                    <Font name="Segoe UI Semilight" size="12.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER_RIGHT" prefHeight="58.0" prefWidth="250.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Phụ trách: Nhân viên AB" wrappingWidth="139.97891998291016">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Cho tôi đổi sản phẩm này nhé. Cho tôi đổi sản phẩm này nhé. Cho tôi đổi sản phẩm này nhé. Cho tôi đổi sản phẩm này nhé. Cho tôi đổi sản phẩm này nhé. Cho tôi đổi sản phẩm này nhé. Cho tôi đổi sản phẩm này nhé. Cho tôi đổi sản phẩm này nhé. Cho tôi đổi sản phẩm này nhé. " wrappingWidth="478.9337158203125" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </VBox>
+            <VBox prefHeight="347.0" prefWidth="530.0" spacing="10.0" style="-fx-background-color: #fff;">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;&gt; Ms Giang đã phân công cho nhân viên AB" />
+                  <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="400.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="34.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@source/am-a-19-year-old-multimedia-artist-student-from-manila--21.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="258.0" spacing="5.0" style="-fx-border: 10px; -fx-background-color: #eee;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nhân viên AB">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tóm tắt vấn đề của người dùng: muốn đổi trả sp" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="482.0" spacing="10.0">
+                     <children>
+                        <ImageView fitHeight="34.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@source/am-a-19-year-old-multimedia-artist-student-from-manila--21.png" />
+                           </image>
+                        </ImageView>
+                        <VBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="258.0" spacing="5.0" style="-fx-border: 10px; -fx-background-color: #eee;">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ms Giang">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="12.0" />
+                                 </font>
+                              </Text>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Giải quyết nhanh lên nhé em" />
+                           </children>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </VBox>
+         </children>
+      </VBox>
+   </center>
+   <right>
+      <VBox prefHeight="524.0" prefWidth="265.0" spacing="10.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thông tin">
+               <font>
+                  <Font name="Segoe UI Semibold" size="15.0" />
+               </font>
+            </Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày khởi tạo: 19/1/2023" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Nguồn: Form (hust.ladesk.com)" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="SĐT: 1234" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email: hvd.703@gmail.com" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tóm tắt vấn đề: Người dùng muốn đổi trả sp" />
+            <ImageView fitHeight="66.0" fitWidth="167.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@source/Screenshot%202023-01-19%20225757.png" />
+               </image>
+            </ImageView>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="30.0" />
+         </padding>
+      </VBox>
+   </right>
+</BorderPane>

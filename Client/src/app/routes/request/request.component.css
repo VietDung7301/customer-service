@@ -1,10 +1,10 @@
 html {
-    font-family: Arial, Helvetica, sans-serif;
     scroll-behavior: smooth;
 }
 
 body {
     background-color: #eee;
+    position: relative;;
 }
 
 .click-on {
@@ -12,7 +12,7 @@ body {
     background-color: #eee;
 }
 
-.open-menu {
+.display {
     display: block !important;
 }
 
@@ -161,6 +161,10 @@ body {
     margin-bottom: 8px;
 }
 
+.id-order{
+  display: none;
+}
+
 #input-id-order {
     margin-top: 8px;
     display: none;
@@ -193,7 +197,6 @@ body {
 
 .modal {
     position: fixed;
-    display: flex;
     align-items: center;
     top: 0;
     bottom: 0;
@@ -219,6 +222,8 @@ body {
 
 .order-header {
     position: relative;
+    background-color: #dd0228;
+
 }
 
 .order-header h4 {
@@ -227,6 +232,8 @@ body {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    color: white;
+    font-weight: bold;
     margin: 0px;
 }
 
@@ -235,9 +242,10 @@ body {
     top: 0;
     right: 0;
     padding: 8px;
-    color: #000;
+    color: white;
     cursor: pointer;
     opacity: 0.9;
+    font-weight: bold;
 }
 
 .close-btn:hover {
@@ -255,40 +263,87 @@ body {
     cursor: pointer;
 }
 
-.left {
+.right {
     float: right;
 }
 
+.order-id{
+    display: inline-block;
+    width: 50%;
+    margin-top: 16px;
+}
+
 .order-list {
+    margin-top: 16px;
     list-style: none;
     padding: 0px 16px;
+    border: 1px #ccc solid;
 }
 
-.order-description {
-    opacity: 0.7;
-    font-size: 14px;
+.product-name{
+  margin-top: 16px;
 }
 
-.order-img {
+
+.product-img {
     width: 45%;
     height: 200px;
     box-sizing: content-box;
 }
 
-.order-id {
-    width: 50%;
-    display: inline-block;
+.product-price{
+    margin-top: 8px;
 }
 
 .order-btn {
-    display: inline;
+   margin-top: 8px;
+    display: inline-block;
     float: right;
 }
 
-.order {
+.product {
     border-bottom: 1px #ccc solid;
 }
 
-#shiping-list {
-    display: none;
+.pop-up{
+  position: fixed;
+  align-items: center;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgb(0 0 0 / 19%);
+  display: none;
+  /* overflow: scroll; */
+  z-index: 999;
+  /* width: 400px; */
+}
+
+.pop-up-content{
+  width: 400px;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 200px ;
+  background-color: white;
+  box-shadow: 0 4px 10px 0 rgb(0 0 0 / 20%), 0 4px 20px 0 rgb(0 0 0 / 19%);
+  text-align: center;
+}
+
+.pop-up-content p{
+  padding-top: 80px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.pop-up-content button{
+  padding: 8px;
+  background-color: #ee4d2d;
+  border: 0px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.pop-up-content button:hover{
+  cursor: pointer;
 }

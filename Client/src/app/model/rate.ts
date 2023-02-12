@@ -1,26 +1,29 @@
 export class Rate {
-  orderId: string;
-  productId: string;
-  postDate: string;
-  starNumbers: number;
   message: string;
-  status: number;
-  userName: string;
+  orderId: string;
+  userId : string;
+  username : string;
+  productId : string;
+  starNumbers: number;
+  productName: string;
+  productImageUrl : string;
 
   constructor(
-    orderId: string,
-    productId: string,
-    postDate: string,
-    starNumbers: number,
-    message: string,
-    status: number
+  message: string,
+  orderId: string,
+  productId : string,
+  starNumbers: number,
+  productName: string,
+  productImageUrl : string,
+
   ) {
+    this.message = message;
     this.orderId = orderId;
+    this.userId = '2';
+    this.username = "Duc Huy";
     this.productId = productId;
     this.starNumbers = starNumbers;
-    this.message = message;
-    this.postDate = postDate;
-    this.status = status;
-    this.userName = "Toan blackpink"
+    this.productName = productName;
+    this.productImageUrl = productImageUrl;
   }
 }

@@ -1,5 +1,5 @@
-import { ProductDetailComponent } from './routes/home/product-detail/product-detail.component';
-import { ProductListComponent } from './routes/home/product-list/product-list.component';
+import { ProductDetailComponent } from './routes/home/order-detail/order-detail.component';
+import { ProductListComponent } from './routes/home/product-list/order-list.component';
 import { HelloWorldComponent } from './routes/test/helloworld.component';
 import { RequestComponent } from './routes/request/request.component';
 import { HomeComponent } from './routes/home/home.component';
@@ -7,6 +7,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './routes/home/dashboard/dashboard.component';
 import { RateListComponent } from './routes/home/rate-list/rate-list.component';
+import { RequestListComponent } from './routes/home/request-list/request-list.component';
 
 const routes: Routes = [
   { path: 'test', component: HelloWorldComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'order-detail', component: ProductDetailComponent },
       { path: 'rate-list', component: RateListComponent },
       { path: 'request', component: RequestComponent},
+      { path: 'request-list', component: RequestListComponent},
     ],
   },
 ];
