@@ -20,9 +20,13 @@ Chọn no nếu được yêu cầu collects CLI.
 firebase init
 ```
 Chọn option "hosting: configure and deploy". Sau đó nhấn enter
+
 Chọn option "use an existing project" và chọn project vừa tạo ở bước 1
+
 Với option "what do you want to use as public directory", nhập: "dist/salesystem"
+
 Với option "rewrite all to /index.html" chọn "yes"
+
 Với option "overwrite" chọn "no"
 
 #### 6. deploy lên firebase
