@@ -31,7 +31,7 @@ Bước này sẽ khởi động server ở port 8000. Nếu port 8000 đã có 
 cd client
 npm start
 ```
-Bước này sẽ khởi động server ở port 4200. Nếu port 4200 đã có app khác sử dụng, hệ thống sẽ hỏi bạn có muốn đổi sang port khác không, nhấn 'y' để đống ý
+Bước này sẽ khởi động client ở port 4200. Nếu port 4200 đã có app khác sử dụng, hệ thống sẽ hỏi bạn có muốn đổi sang port khác không, nhấn 'y' để đống ý
 #### 3. Truy cập client
 Mở trình duyệt và gõ đường link [localhost:4200](localhost:4200) để truy cập vào client
 
