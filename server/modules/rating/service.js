@@ -51,7 +51,6 @@ exports.createProductRating = async (data) => {
 		{'totalVote': 1, 'avgStar': 1}
 	) || {totalVote: 0, avgStar: 0};
 
-	console.log(totalVote, avgStar)
 	let newAvgStar = (avgStar * totalVote + data.starNumbers) / (totalVote + 1);
 
 	await ProductRating(DB_CONNECTION).updateOne(
@@ -163,6 +162,7 @@ exports.privateGetAllProductRating = async()=>{
 			'productName': 1,
 			'productImageUrl': 1,
 			'ratingList.userId': 1, 
+			'ratingList.userName': 1,
 			'ratingList.starNumbers': '$ratingList.star', 
 			'ratingList.orderId': 1,
 			'ratingList.message': '$ratingList.description',

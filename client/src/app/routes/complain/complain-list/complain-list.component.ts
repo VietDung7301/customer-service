@@ -15,10 +15,10 @@ export enum ViewMode {
 
 @Component({
   selector: 'app-request-list',
-  templateUrl: './request-list.component.html',
-  styleUrls: ['./request-list.component.css'],
+  templateUrl: './complain-list.component.html',
+  styleUrls: ['./complain-list.component.css'],
 })
-export class RequestListComponent implements OnInit {
+export class ComplainListComponent implements OnInit {
   fullTextSearch: string = '';
   listOfData: Request[] = [];
   listOfDisplayData: Request[] = [];

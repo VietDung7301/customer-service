@@ -32,6 +32,7 @@ export class RateListComponent implements OnInit {
   listOfData: ProductRate[] = [];
   listAllProduct: any[] = [];
   editingRate: any;
+  userProblem: any;
   RateStatus = RateStatus;
   constructor(
     private ratesService: RatesService,
@@ -122,7 +123,7 @@ export class RateListComponent implements OnInit {
   }
 
   async sendSolveCommentRequest() {
-    var data = { ...this.editingRate, status: 1 };
+    var data = { ...this.editingRate, status: 1, userProblem: this.userProblem };
     await this.ratesService
       .updateProductRate(data.id, data)
       .toPromise()

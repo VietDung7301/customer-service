@@ -1,15 +1,15 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { OrderFormService } from 'src/app/services/orderForm/order-form.service';
-import { UserService } from '../../services/user/user.service';
+import { UserService } from '../../../services/user/user.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-test',
-  templateUrl: './request.component.html',
-  styleUrls: ['./request.component.css']
+  templateUrl: './complain.component.html',
+  styleUrls: ['./complain.component.css']
 })
-export class RequestComponent implements OnInit{
+export class UserComplainComponent implements OnInit{
   userInfor: any;
   userId: any;
   inputUserName: any;
@@ -35,7 +35,7 @@ export class RequestComponent implements OnInit{
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
-      this.userId = params['uid'];
+      this.userId = '2';
     });
     // lay du lieu tu api don hang
     this.orderService.getOrder().subscribe((data) =>{

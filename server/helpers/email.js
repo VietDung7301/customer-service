@@ -6,7 +6,6 @@ let length = 0;
 let transporter = {}, mainOptions = {};
 exports.sendEmail = (to, subject, text, html, inReplyToGmail, messageIdGmail) => {
     if (user && pass) {
-        console.log('user', user, pass)
             transporter = nodemailer.createTransport({
             service: 'Gmail',
             auth: { user: user, pass: pass }
@@ -27,7 +26,6 @@ exports.sendEmail = (to, subject, text, html, inReplyToGmail, messageIdGmail) =>
         }
         length = length + 1
         const send = () => {
-            console.log(length);
             transporter.sendMail(mainOptions, (err, success) => {
                 length = length - 1;
                 if (success) {

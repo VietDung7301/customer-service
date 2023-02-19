@@ -1,6 +1,6 @@
 const UserComplain = require("../../models/userComplain");
 const UserProduct = require("../../models/userProduct");
-const {sendEmail} = require("../helpers/email");
+const {sendEmail} = require("../../helpers/email");
 
 problemType = [
 	"Giao hàng và nhận hàng",
@@ -13,22 +13,22 @@ problemType = [
 
 /**
  * Thêm complain mới từ người dùng:
- * @param {{userId,userAccount,userProblem,userEmail,orderId,problemDescription}} data 
+ * @param {{userId,userAccount,userProblem,userEmail,userAvatar,orderId,problemDescription}} data 
+ * @param {String} source
  * @returns 
  */
-exports.createUserComplain = async (data) => {
+exports.createUserComplain = async (data, source) => {
 	if (data) {
 		// 1.Convert data dung theo model
 		let dataConvert={
 			userId:data.userId,
 			userAccount:data.userAccount,
-			userName:data.userName || null,
 			userProblem:data.userProblem,
 			userEmail:data.userEmail,
 			userAvatar:data.userAvatar,
 			orderId:data.orderId,
 			problemDescription:data.problemDescription,
-			source:null,
+			source: source,
 			status:0,
 			staffName:null,
 			staffId:null,
@@ -40,11 +40,10 @@ exports.createUserComplain = async (data) => {
 				solution:null,
 				comment:null,
 				reply:[]
-			
+			}
 		}
-	}
 		// 2. Lưu complain vào database
-		let newData = await UserComplain(DB_CONNECTION).create(data)
+		let newData = await UserComplain(DB_CONNECTION).create(dataConvert)
 		let newUserComplain = await UserComplain(DB_CONNECTION).findById({_id: newData._id})
 
 
