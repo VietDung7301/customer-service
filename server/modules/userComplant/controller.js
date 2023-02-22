@@ -1,9 +1,9 @@
 const service = require("./service");
 
 exports.createUserComplain = async (req, res)=>{
+    let requestedUrl = req.protocol + '://' + req.get('Host') + req.url;
     try {
-        console.log("req",req.body);
-        const newUserComplain = await service.createUserComplain(req.body);
+        const newUserComplain = await service.createUserComplain(req.body, requestedUrl);
         res.status(201).json({
             success: true,
             messages: ["Add success"],
@@ -20,7 +20,6 @@ exports.createUserComplain = async (req, res)=>{
 }
 exports.getListRequest = async (req, res)=>{
     try{
-        console.log(req.body);
         const listRequest = await service.getListRequest();
         res.status(201).json(listRequest)
     }catch(error){
@@ -34,7 +33,6 @@ exports.getListRequest = async (req, res)=>{
 }
 exports.updateRequest = async (req, res)=>{
     try{
-        console.log(req.body);
         const newRequest = await service.updateRequest(req.body);
         res.status(201).json(newRequest)
     }catch(error){
@@ -45,5 +43,31 @@ exports.updateRequest = async (req, res)=>{
             content: error.messages
         })
     }
-    
+}
+exports.getComplainById = async (req, res) => {
+    try {
+        const complain = await service.getComplainById(req.params.id);
+        res.status(201).json(complain);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            success: false,
+            messages: "Get fail",
+            content: error.messages
+        })
+    }
+}
+
+exports.addReply = async (req, res) => {
+    try {
+        const complain = await service.addReply(req.params.id, req.body);
+        res.status(201).json(complain);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            success: false,
+            messages: "Add fail",
+            content: error.messages
+        })
+    }
 }

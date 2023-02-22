@@ -1,0 +1,186 @@
+<div class="container m-12">
+  <div class="header flr p-12">
+    <h1 class="header__title">Danh sách phản hồi</h1>
+    <div class="header__role">
+      <nz-radio-group
+        *ngIf="currentRole == Role.TOANNV"
+        [(ngModel)]="viewMode"
+        (ngModelChange)="onChangeViewMode($event)"
+      >
+        <label nz-radio-button [nzValue]="ViewMode.All">Tất cả</label>
+        <label nz-radio-button [nzValue]="ViewMode.OnlyMe"
+          >Được chỉ định cho tôi</label
+        >
+      </nz-radio-group>
+      <!-- Xem với vai trò:
+      <nz-select [(ngModel)]="currentRole">
+        <nz-option [nzValue]="Role.ADMIN" nzLabel="Admin"></nz-option>
+        <nz-option
+          [nzValue]="Role.TOANNV"
+          nzLabel="Nhân viên ToànNV"
+        ></nz-option>
+      </nz-select> -->
+    </div>
+  </div>
+  <div class="body">
+    <div class="body__top p-12">
+      <div nz-row class="left-tab">
+        <nz-input-group
+          nz-col
+          nzSpan="6"
+          [nzPrefix]="prefixTemplateUser"
+          [nzSuffix]="suffixIconButton"
+        >
+          <input
+            nz-input
+            class="input-search"
+            [(ngModel)]="fullTextSearch"
+            (keyup.enter)="nzOnSearch()"
+            placeholder="Tìm kiếm..." />
+          <ng-template #prefixTemplateUser
+            ><button
+              nz-button
+              nzType="text"
+              nzShape="circle"
+              (click)="nzOnSearch()"
+            >
+              <i class="fa-solid fa-magnifying-glass"></i></button
+          ></ng-template>
+          <ng-template #suffixIconButton>
+            <button
+              nz-button
+              nzType="text"
+              nzShape="circle"
+              (click)="onCancelSearch()"
+            >
+              <i class="fa-solid fa-xmark"></i>
+            </button> </ng-template
+        ></nz-input-group>
+        <div class="assign-button" nz-col nzSpan="2">
+          <button
+            *ngIf="setOfCheckedId.size > 0"
+            nz-button
+            nzType="primary"
+            nzShape="circle"
+            class="ml-12"
+            nz-dropdown
+            nzTrigger="click"
+            [nzDropdownMenu]="menu"
+          >
+            <i class="fa-solid fa-share"></i>
+          </button>
+        </div>
+      </div>
+      <div class="right-tab"></div>
+    </div>
+    <div class="body__table m-12">
+      <nz-table
+        #rowSelectionTable
+        nzShowPagination
+        [nzData]="listOfDisplayData"
+        (nzCurrentPageDataChange)="onCurrentPageDataChange($event)"
+        [nzScroll]="{ y: '350px' }"
+      >
+        <thead>
+          <tr>
+            <th
+              *ngIf="currentRole == Role.ADMIN"
+              nzWidth="5%"
+              [nzChecked]="checked"
+              [nzIndeterminate]="indeterminate"
+              (nzCheckedChange)="onAllChecked($event)"
+            ></th>
+            <th nzWidth="20%">Người sử dụng</th>
+            <th
+              nzWidth="auto"
+              [nzShowFilter]="true"
+              [nzFilterMultiple]="true"
+              [nzFilterFn]="filterFnStaff"
+              [nzFilters]="listOfFilterStaff"
+            >
+              Phản hồi
+            </th>
+            <th nzWidth="15%">Thời gian</th>
+            <th
+              nzWidth="15%"
+              [nzShowFilter]="true"
+              [nzFilterMultiple]="true"
+              [nzFilterFn]="filterFnStatus"
+              [nzFilters]="listOfFilterStatus"
+            >
+              Trạng thái
+            </th>
+            <th nzWidth="5%"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- found it -->
+          <tr *ngFor="let data of rowSelectionTable.data">
+            <td
+              *ngIf="currentRole == Role.ADMIN"
+              [nzChecked]="setOfCheckedId.has(data.id)"
+              (nzCheckedChange)="onItemChecked(data.id, $event)"
+            ></td>
+            <td>
+              <div class="user-detail flr">
+                <img
+                  [src]="data.userAvatar?data.userAvatar:defaultAvatar"
+                  alt="Ảnh đại diện"
+                  class="user__avatar mr-12"
+                />
+                <div class="user-info">
+                  <b class="user__name">{{ data.userName }}</b>
+                  <div class="user__email">{{ data.userEmail }}</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="content mb-12">
+                {{ data.content }}
+              </div>
+              <div class="staff" *ngIf="data.staff">
+                <i class="fa-solid fa-user"></i>
+                {{ data.staff }}
+              </div>
+            </td>
+            <td>
+              <div class="time-tag">
+                {{ getSendRequestTime(data.sendOnDate) }}
+              </div>
+            </td>
+            <td>
+              <div [ngSwitch]="data.status">
+                <nz-tag *ngSwitchCase="'replied'" nzColor="success">
+                  <i class="fa-solid fa-reply status-icon"></i>
+                  <span>Đã trả lời</span>
+                </nz-tag>
+                <nz-tag *ngSwitchCase="'processing'" nzColor="processing">
+                  <i class="fa-sharp fa-solid fa-envelope-open status-icon"></i>
+                  <span>Mở</span>
+                </nz-tag>
+                <nz-tag *ngSwitchCase="'waiting'" nzColor="warning">
+                  <i class="fa-solid fa-circle status-icon"></i>
+                  <span>Mới</span>
+                </nz-tag>
+              </div>
+            </td>
+            <!-- <td>{{ data.sendOnDate | date: "dd/MM/yyyy" }}</td> -->
+            <td><a routerLink="../complain-detail" [queryParams]="{id: data.id}">
+              <i class="fa-solid fa-right-to-bracket"></i>
+            </a></td>
+          </tr>
+        </tbody>
+      </nz-table>
+    </div>
+  </div>
+</div>
+
+<nz-dropdown-menu #menu="nzDropdownMenu">
+  <h3>Gán công việc cho</h3>
+  <ul nz-menu>
+    <li nz-menu-item *ngFor="let employee of listEmployee"><button nz-button type="text" (click)="assignWork(employee)"><div class="staff">
+      <i class="fa-solid fa-user"></i>
+      {{employee}}
+    </div></button></li>
+  </ul>
+</nz-dropdown-menu>

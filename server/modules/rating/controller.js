@@ -62,7 +62,6 @@ exports.getProductRating = async (req, res) => {
 exports.getUserProductRating = async(req,res)=>{
     try {
         const result = await service.getUserProductRating(req.query);
-        console.log(req.params)
         res.status(200).json({
             success: true,
             messages: [result.message],
@@ -116,6 +115,17 @@ exports.privateGetProductRating =async(req,res) => {
 
 exports.test = async(req, res) => {
     res.status(200).json({
-        message: "Server is running"
+        errorCode: "00",
+        transaction: {
+            cardCode: "12398471209834",
+            owner: "Viet Dung",
+            command: "pay",
+            cvvCode: "123",
+            dateExpired: "1020",
+            transactionId: "AWOIFJ2098209134",
+            transactionContent: "Oke con te te luon",
+            amount: "100000",
+            createdAt: "2020-11-4 10:55:26"
+        }
     })
 }

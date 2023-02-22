@@ -13,8 +13,9 @@ const httpOptions = {
 })
 export class RatesService {
   // baseUrl = `${environment.apiURL}/rates-list`;
-  postRateAPI = `${environment.apiURL}/product/rating`
+  postRateAPI = `${environment.apiURL}/product/rating`;
   getRateAPI = `${environment.apiURL}/sp07/product/rating`;
+  complainAPI = `${environment.apiURL}/user/complain`;
 
   constructor(private http: HttpClient) {}
 
@@ -30,7 +31,15 @@ export class RatesService {
   }
 
   updateProductRate(id: any, data: any) {
-    return this.http.put<any[]>(`${this.getRateAPI}/${id}`, data);
+    let sendData = {
+      userId: data.userId,
+      userAccount: data.userName,
+      userProblem: data.userProblem,
+      orderId: data.orderId,
+      problemDescription: data.message,
+      rateId: id
+    }
+    return this.http.post<any[]>(`${this.complainAPI}`, sendData);
   }
 
   uploadImage(body: any): Observable<any> {

@@ -8,9 +8,6 @@ const UserComplainSchema=new Schema({
     userAccount:{
         type:String
     },
-    userName:{
-        type:String
-    },
     userProblem:{
         type:Number
     },

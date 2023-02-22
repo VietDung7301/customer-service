@@ -1,0 +1,36 @@
+.container {
+    height: 100vh;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+  
+.avatar {
+  width: 50px;
+  height: auto;
+}
+
+.avatar_comment {
+  width: 40px;
+  height: auto;
+}
+
+.comment {
+  width: max-content;
+  height: max-content;
+  max-width: 500px;
+  border-radius: 20px;
+  padding: 5px 20px;
+}
+
+.input_comment {
+  border-radius: 20px;
+}
+.send-comment {
+  position: relative;
+  right: 0px;
+  top: 0px;
+  z-index: 2;
+}
+.infor {
+  padding: 40px 40px;
+}
