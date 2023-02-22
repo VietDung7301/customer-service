@@ -23,7 +23,7 @@ const routes: Routes = [
       // { path: 'order-detail?orderId=1', component: ProductDetailComponent },
       { path: 'order-detail', component: ProductDetailComponent },
       { path: 'rate-list', component: RateListComponent },
-      { path: 'complain', component: UserComplainComponent },
+      { path: 'request', component: UserComplainComponent },
       { path: 'complain-list', component: ComplainListComponent },
       { path: 'complain-detail', component: ComplainDetailComponent }
     ],

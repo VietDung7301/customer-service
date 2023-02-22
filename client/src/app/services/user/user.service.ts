@@ -1,11 +1,12 @@
 import { HttpClient, HttpHeaders, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  baseUrl = 'https://api-admin-dype.onrender.com';
+  baseUrl = environment.userAPI;
   constructor(private http: HttpClient) {}
 
   // Đăng nhập vào hệ thống, tên đăng nhập mặc định như phía dưới

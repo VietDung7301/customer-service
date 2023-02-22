@@ -4,6 +4,7 @@
 
 export const environment = {
   production: true,
+  userAPI: 'https://api-admin-dype.onrender.com',
   orderAPI: 'http://localhost:8000/api/listOrderByUser/2',
   apiURL :'http://localhost:8000'
 };
