@@ -123,7 +123,7 @@ exports.test = async(req, res) => {
             cvvCode: "123",
             dateExpired: "1020",
             transactionId: "AWOIFJ2098209134",
-            transactionContent: "11/22",
+            transactionContent: "Oke con te te luon",
             amount: "100000",
             createdAt: "2020-11-4 10:55:26"
         }

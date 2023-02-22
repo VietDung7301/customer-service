@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Request } from 'src/app/model/request';
 import { RequestService } from 'src/app/services/requests/request.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 export enum Role {
   ADMIN = 0,
@@ -32,9 +33,10 @@ export class ComplainListComponent implements OnInit {
   viewMode: ViewMode = ViewMode.All;
   defaultAvatar: string = '../../../../assets/avatar.png'
 
-  listEmployee = ['ToanNV', 'SangPN'];
+  listEmployee = ['leduchuy', 'levantoan', 'phamnhatsang'];
   constructor(
     private requestService: RequestService,
+    private userService: UserService,
     private message: NzMessageService
   ) {}
 
@@ -48,8 +50,9 @@ export class ComplainListComponent implements OnInit {
 
   listOfFilterStaff = [
     { text: 'Chưa được gán', value: null },
-    { text: 'Sang', value: 'SangPN' },
-    { text: 'Toàn', value: 'ToanNV' },
+    { text: 'Sang', value: 'phamnhatsang' },
+    { text: 'Toàn', value: 'levantoan' },
+    { text: 'Huy', value: 'leduchuy'}
   ];
   filterFnStaff = (list: string[], item: any) =>
     list.some((staff) => item.staff == staff);
@@ -60,6 +63,7 @@ export class ComplainListComponent implements OnInit {
   }
 
   async fetchData() {
+    await this.userService.login();
     var response = await this.requestService.getListRequest();
     this.listOfData = response;
     this.listOfDisplayData = [...this.listOfData];

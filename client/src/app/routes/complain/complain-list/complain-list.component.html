@@ -110,9 +110,11 @@
             >
               Trạng thái
             </th>
+            <th nzWidth="5%"></th>
           </tr>
         </thead>
         <tbody>
+          <!-- found it -->
           <tr *ngFor="let data of rowSelectionTable.data">
             <td
               *ngIf="currentRole == Role.ADMIN"
@@ -163,6 +165,9 @@
               </div>
             </td>
             <!-- <td>{{ data.sendOnDate | date: "dd/MM/yyyy" }}</td> -->
+            <td><a routerLink="../complain-detail" [queryParams]="{id: data.id}">
+              <i class="fa-solid fa-right-to-bracket"></i>
+            </a></td>
           </tr>
         </tbody>
       </nz-table>

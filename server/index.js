@@ -21,6 +21,7 @@ app.use(express.urlencoded({ extended: false, limit: '50mb', parameterLimit: 500
  */
 router.use("", require("./modules/rating/route"));
 router.use("", require("./modules/userComplant/route"));
+router.use("", require("./modules/order/route"));
 
 
 app.use(router);

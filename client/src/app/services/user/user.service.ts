@@ -13,13 +13,16 @@ export class UserService {
   login() {
     const url = `${this.baseUrl}/api/login`;
     const body = {
-      email: "admin@ltct.com",
+      email: "toan123@gmail.com",
       password: "123456"
     };
     const response = this.http.post<any>(url, body)
       .subscribe(data => {
         console.log('data', data)
         localStorage.setItem('access_token', data.access_token);
+        localStorage.setItem('userName', data.user.name);
+        localStorage.setItem('userId', data.user.id);
+        localStorage.setItem('userEmail', data.user.email);
       })
   }
 

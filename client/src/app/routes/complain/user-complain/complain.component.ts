@@ -50,17 +50,16 @@ export class UserComplainComponent implements OnInit{
   async fetchData() {
     // Đăng nhập vào module user để lấy token
     await this.login();
-    await this.getUserInfor();
+    console.log("local email", localStorage.getItem('userEmail'));
+    this.userInfor = {
+      email: localStorage.getItem('userEmail'),
+      name: localStorage.getItem('userName')
+    }
+    console.log("userInfor email", this.userInfor.email);
   }
 
   async login(): Promise<void> {
     const response = await this.userService.login()
-  }
-  async getUserInfor(): Promise<void> {
-    const response = await this.userService
-      .getUserInfor(this.userId)
-      .toPromise();
-    this.userInfor =response;
   }
 
   initForm() {
@@ -93,11 +92,11 @@ export class UserComplainComponent implements OnInit{
   }
 
   public submitForm(){
-        const data ={
+        const data =  {
           userId : this.userId,
-          userAccount : this.complainForm.value.userAccount,
+          userAccount : this.complainForm.value.userAccount?this.complainForm.value.userAccount:this.userInfor.name,
           userProblem : this.complainForm.value.userProblem,
-          userEmail : this.complainForm.value.userEmail,
+          userEmail : this.complainForm.value.userEmail?this.complainForm.value.userEmail:this.userInfor.email,
           orderId : this.complainForm.value.orderId,
           problemDescription : this.complainForm.value.problemDescription,
         }

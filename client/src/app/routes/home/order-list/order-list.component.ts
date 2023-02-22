@@ -15,12 +15,12 @@ const getBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
     reader.onerror = (error) => reject(error);
   });
 @Component({
-  selector: 'app-product-list',
+  selector: 'app-order-list',
   templateUrl: './order-list.component.html',
   styleUrls: ['./order-list.component.css'],
   providers: [DatePipe]
 })
-export class ProductListComponent implements OnInit {
+export class OrderListComponent implements OnInit {
   orderList: any;
   currentOrder: any;
   currentProduct: any;

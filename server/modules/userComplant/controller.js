@@ -43,5 +43,31 @@ exports.updateRequest = async (req, res)=>{
             content: error.messages
         })
     }
-    
+}
+exports.getComplainById = async (req, res) => {
+    try {
+        const complain = await service.getComplainById(req.params.id);
+        res.status(201).json(complain);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            success: false,
+            messages: "Get fail",
+            content: error.messages
+        })
+    }
+}
+
+exports.addReply = async (req, res) => {
+    try {
+        const complain = await service.addReply(req.params.id, req.body);
+        res.status(201).json(complain);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            success: false,
+            messages: "Add fail",
+            content: error.messages
+        })
+    }
 }

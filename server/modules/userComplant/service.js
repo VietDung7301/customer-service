@@ -221,7 +221,35 @@ exports.updateRequest = async (data)=> {
 		).clone();
 
         return result;
-		  
-
     }
+}
+/**
+ * Lấy thông tin chi tiết 1 complain
+ * @param {*} id 
+ * @returns 
+ */
+exports.getComplainById = async (id) => {
+	console.log("id receive: ", id);
+	let result = await UserComplain(DB_CONNECTION).findOne(
+		{'_id': id}
+	);
+	return result;
+}
+
+/**
+ * 
+ * @param {String} id  ID của complain
+ * @param {staffId, staffName, content, staffImageUrl} data Thông tin comment mới
+ * @returns 
+ */
+exports.addReply = async (id, data) => {
+	console.log("data receive: ", data);
+	await UserComplain(DB_CONNECTION).updateOne(
+		{'_id': id},
+		{$push: {'handler.reply': data}}
+	)
+	let newComplain = await UserComplain(DB_CONNECTION).findOne(
+		{'_id': id}
+	);
+	return newComplain;
 }

@@ -46,6 +46,7 @@
         class="order__body mt-12 mb-12"
         *ngFor="let product of order.products; let i = index"
       >
+        <!-- found it -->
         <a routerLink="../order-detail" [queryParams]="{orderId: order.orderId}"><div class="product-detail flr">
           <div class="product__img">
             <img
