@@ -22,7 +22,7 @@ exports.createProductRating = async (data) => {
 		userId: data.userId,
 		description: data.message,
 		star: data.starNumbers,
-		userName: data.userName,
+		userName: data.username,
 		productName: data.productName,
 		productImageUrl: data.productImageUrl
 	};
