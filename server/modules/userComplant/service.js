@@ -129,7 +129,7 @@ exports.getListRequest = async () => {
 	let result = await UserComplain(DB_CONNECTION).aggregate([
 		{$project: {
 			'id':'$_id',
-			'userName': 1, 
+			'userName': '$userAccount', 
 			'userEmail': 1,
 			'userAvatar': 1,
 			'content': '$problemDescription', 
