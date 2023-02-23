@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
-  orderAPI: 'http://103.179.173.95:81/api/listOrderByUser/2',
-  apiURL :'http://localhost:8000'
+  userAPI: 'https://api-admin-dype.onrender.com',
+  orderAPI: 'https://tungsnk.tech:8888/api/listOrderByUser/21',
+  apiURL :'https://customer-service.up.railway.app/'
 };
