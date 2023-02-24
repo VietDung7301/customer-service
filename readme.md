@@ -1,12 +1,12 @@
 # Customer service
-## 1. Mô tả
+## 1. Project description
 Project này là 1 module của hệ thống bán hàng "LTCT" với 2 mục đích chính là "Đánh giá sản phẩm" và "Xử lý khiếu nại".
 Cụ thể như sau
 #### Đánh giá sản phẩm
 Sau khi mua hàng thành công, người dùng được phép đánh giá sản phẩm (Số sao và đánh giá chi tiết). Đánh giá của người dùng sẽ được ghi lại và hiển thị cùng với sản phẩm
 #### Xử lý khiếu nại
 Cho phép người dùng gửi khiếu nại đến hệ thống. Cùng với đó là cung cấp các chức năng cho phép nhân viên xử lý khiếu nại và phản hồi lại cho người dùng
-## 2. Cách cài đặt
+## 2. Installation
 ### Yêu cầu
 Cài đặt nodeJs version 16.14.2 (Nếu sử dụng node khác có thể xảy ra tình trạng không tương thích phiên bản
 ### Các bước tiến hành
@@ -26,7 +26,7 @@ cd client
 npm install
 ```
 
-## 3. Cách sử dụng
+## 3. How to use
 Bước cài đặt ở phía trên chỉ cần thực hiện 1 lần, sau đó mỗi lần chạy project chỉ cần thực hiện cách lệnh sau đây
 #### Khởi động server
 ```shell
@@ -43,7 +43,7 @@ Bước này sẽ khởi động client ở port 4200. Nếu port 4200 đã có 
 #### Truy cập client
 Mở trình duyệt và gõ đường link [localhost:4200](localhost:4200) để truy cập và sử dụng
 
-## 4. Cách chỉnh sửa, reuse
+## 4. How to modify, reuse
 #### Cách thêm mới 1 trang:
 Thực hiện với ví dụ tạo 1 trang helloworld
 ##### 1. Viết mã nguồn trang
