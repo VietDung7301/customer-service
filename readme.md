@@ -44,15 +44,33 @@ Bước này sẽ khởi động client ở port 4200. Nếu port 4200 đã có 
 Mở trình duyệt và gõ đường link [localhost:4200](localhost:4200) để truy cập và sử dụng
 
 ## 4. Cách chỉnh sửa, reuse
-#### Thêm mới 1 trang
-- Để tạo một màn mới thực hiện các bước sau:
-	+ Bước 1: Mở shell (cd Client)
-	+ Bước 2: Nhập lệnh: ng g c routes/<tên màn> --skip-tests (vd: ng g c routes/product-list --skip-tests)
-		=> sau bước 2, thư mục product-list đã được tạo ra với 3 file: html, ts, css
-		(Nếu không dùng câu lệnh thì có thể tự tạo thư mục 3 file kia bằng tay)
-	+ Bước 3: Thêm đường dẫn của màn hình vừa tạo trong file app-routing.module.ts
-		(Tham khảo 1 path đã có trước đấy để tạo ra 1 path mới)
-		{ path: '...', component: ...}
+#### Cách thêm mới 1 trang:
+Thực hiện với ví dụ tạo 1 trang helloworld
+##### 1. Viết mã nguồn trang
+Tạo mới 3 file `helloworld.component.html`, `helloworld.component.ts`, `helloworld.component.css`
+
+Thêm code vào file `helloworld.component.html`
+```shell
+<h1>hello world</h1>
+```
+##### 2. Tạo component
+Thêm code vào file 'helloworld.component.ts`
+```shell
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-test',
+  templateUrl: './helloworld.component.html',
+  styleUrls: ['./helloworld.component.css']
+})
+export class HelloWorldComponent implements OnInit{
+  constructor() { }
+  ngOnInit(): void {
+  }
+}
+```
+##### 3. Import component vừa tạo
+Import component vừa tạo vào `Client\src\app\app-routing.module.ts` và `Client\src\app\app.module.ts`
 		
 #25/01/2023 (Mùng 4 Tết)
 Cầu chúc cho tất cả mọi người một năm bình an!
